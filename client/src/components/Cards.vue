@@ -1,0 +1,74 @@
+<template>
+  <div class="row">
+    <div class="col l3 m4 s6">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="images/preview-main.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            Название книги
+          </span>
+          <span class="card-writer activator grey-text text-darken-2">
+            Автор книги
+          </span>
+          <p><span class="сard-price">300</span> руб.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col l3 m4 s6">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="images/kola.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            Название книги
+          </span>
+          <span class="card-writer activator grey-text text-darken-2">
+            Автор книги
+          </span>
+          <p><span class="сard-price">Цена</span> руб.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col l3 m4 s6">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="images/kola.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            Название книги
+          </span>
+          <span class="card-writer activator grey-text text-darken-2">
+            Автор книги
+          </span>
+          <p><span class="сard-price">Цена</span> руб.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col l3 m4 s6">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="images/kola.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            Название книги
+          </span>
+          <span class="card-writer activator grey-text text-darken-2">
+            Автор книги
+          </span>
+          <p><span class="сard-price">Цена</span> руб.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Cards'
+};
+</script>

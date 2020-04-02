@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "BravoRG";  
+    src: url("../fonts/BravoRG.otf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal;
+}
+
+p.title{
+    /* Сделать единые стили для названий */
+    color: midnightblue;
+    font-size: 20px;
+    padding: 3px 15px;
+}
+
+/* banners */
+
+.banners {
+    margin: 20px 0;
+}
+
+.preview-main {
+    width: 100%;
+    height: 420px;
+    background: url(../images/preview-main.jpg) center no-repeat;
+}
+
+.preview-minor {
+    width: 100%;
+    height: 205px;
+    margin-bottom: 10px;
+    background: url(../images/preview-minor.jpg) center no-repeat;
+
+}
+
+.preview-text {
+    width: 60%;
+    text-align: center;
+    color: white;
+    font-family: "BravoRG";
+    margin: 0 auto;
+    padding: 90px 0;
+    font-size: 80px;
+    font-weight: 700;
+}
+
+/* bors (fix) */
+
+.watch-more a{
+    color: gray;
+    font-size: 18px;
+    float: right;
+
+}
+
+.card-image img{
+    width: 240px;
+    height: 180px;
+}
+
+.card-writer {
+}
+
+.сard-price {
+    color: navy;
+    font-size: 18px;
+}
+
+/* Filter */
+
+.filter-bar {
+    border-right: 1px solid #ddd;
+}
+
+.collapsible {
+    box-shadow: none;
+    border: 0px;
+
+}
+
+.collapsible-header, .collapsible-body {
+    border: 0px;
+}
+
+.collapsible-body {
+    border: 0px;
+    padding: 0 25px;
+}
+
+.collapsible-body p {
+    margin: 0;
+    padding: 15px;
+    color: navy;
+}
+
+.collapsible-body p a{
+    color: navy;
+}
+
+.collapsible-header:hover {
+    background-color: rgba(238, 238, 238, 0.438);
+}
+
+.collapsible-body p:hover {
+    background-color: rgba(238, 238, 238, 0.671);
+}
+
+/* Bookshelf */
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Login */
+
+.login-form {
+    width: 50%;
+    min-width: 260px;
+    max-width: 560px;
+    margin: 4.9vw auto;
+    padding: 30px 10px;
+    border: navy 1px solid;
+    text-align: center;
+}
+
+.login-form .logo {
+    font-size: 2.1rem;
+    color: navy;
+}
+
+@media screen and (max-width: 600px) {
+    .preview-minor {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    
+}
