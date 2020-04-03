@@ -1,8 +1,8 @@
 <template>
   <div class="filter-bar">
-    <p class="title">
+    <h4 class="title">
       Настройка поиска
-    </p>
+    </h4>
     <ul class="collapsible">
       <li>
         <div class="collapsible-header">

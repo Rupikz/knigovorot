@@ -5,11 +5,41 @@
     font-weight: normal;
 }
 
-p.title{
+h4 {
+    font-family: BravoRG;
+}
+
+.title{
     /* Сделать единые стили для названий */
     color: midnightblue;
-    font-size: 20px;
-    padding: 3px 15px;
+}
+
+.logo {
+    position: absolute;
+    left: -55px;
+    bottom: 5px;
+}
+
+.brand-logo {
+    font-family: BravoRG;
+}
+
+.mark {
+    color: midnightblue;
+}
+
+#app {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+footer {
+    flex: 1 0 auto;
+}
+
+.pagination li.active {
+    background-color: #424242;
 }
 
 /* banners */
@@ -61,7 +91,7 @@ p.title{
 }
 
 .сard-price {
-    color: navy;
+    color: midnightblue;
     font-size: 18px;
 }
 
@@ -89,11 +119,10 @@ p.title{
 .collapsible-body p {
     margin: 0;
     padding: 15px;
-    color: navy;
 }
 
 .collapsible-body p a{
-    color: navy;
+    color: midnightblue;
 }
 
 .collapsible-header:hover {
@@ -107,9 +136,11 @@ p.title{
 /* Bookshelf */
 
 .pagination {
+    max-width: 600px;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 /* Login */
@@ -118,15 +149,16 @@ p.title{
     width: 50%;
     min-width: 260px;
     max-width: 560px;
-    margin: 4.9vw auto;
+    margin: 5vw auto;
     padding: 30px 10px;
-    border: navy 1px solid;
+    border: #424242 2px solid;
+    border-radius: 5px;
     text-align: center;
 }
 
 .login-form .logo {
     font-size: 2.1rem;
-    color: navy;
+    color: midnightblue;
 }
 
 @media screen and (max-width: 600px) {

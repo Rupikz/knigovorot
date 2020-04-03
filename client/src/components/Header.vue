@@ -1,9 +1,9 @@
 <template>
   <div class="nav-menu">
     <nav>
-      <div class="nav-wrapper indigo darken-1">
-        <a href class="center brand-logo">Полка кафки</a>
-        <a href data-target="mobile-demo" class="sidenav-trigger">
+      <div class="nav-wrapper grey darken-3">
+        <a href="/" class="center brand-logo"><img class="logo" style="width: 64px;" src="images/logo.png">Полка кафки</a>
+        <a ref="/" data-target="mobile-demo" class="sidenav-trigger">
           <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down">

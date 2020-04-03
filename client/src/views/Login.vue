@@ -1,6 +1,6 @@
 <template>
   <div class="login-form">
-    <a href="" class="logo">Полка кафки</a>
+    <a href="" class="">Здесь должно быть лого</a>
     <ul class="collapsible">
       <li class="active">
         <div class="collapsible-header">
@@ -23,7 +23,7 @@
         </div>
       </li>
       <li>
-        <div class="collapsible-header">
+        <div class="collapsible-header mark">
           Регистрация
         </div>
         <div class="collapsible-body">
