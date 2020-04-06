@@ -1,5 +1,5 @@
 export default {
-  PORT: process.env.PORT || 8081,
+  PORT: process.env.PORT || 8082,
   PROJECT: 'development',
   DB_CONNECT: 'postgresql://postgres:rjkz2010@localhost:5432/development',
   session: {
@@ -7,4 +7,5 @@ export default {
     cookie_name: 'sid',
     session_store: 'xz chto eto',
   },
+  SECRET_JWT: 'secret',
 };
