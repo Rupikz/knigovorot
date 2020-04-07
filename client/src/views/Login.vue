@@ -8,16 +8,19 @@
         </div>
         <div class="collapsible-body">
           <div class="row">
-            <form class="col s12">
+            <form class="col s12" method="POST">
               <div class="input-field">
-                <input id="login" placeholder="Ваша почта или логин" type="text" class="validate">
+                <input type="hidden" name="operation" value="signin-user">
+                <input id="login" name="login" placeholder="Ваша почта или логин" type="text" class="validate">
                 <label for="login">Логин</label>
               </div>
               <div class="input-field">
-                <input id="password" placeholder="Ваш пароль" type="text" class="validate">
+                <input id="password" name="password" placeholder="Ваш пароль" type="text" class="validate">
                 <label for="password">Пароль</label>
               </div>
-              <a class="waves-effect waves-light btn">Войти</a>
+              <button class="waves-effect waves-light btn">
+                Войти
+              </button>
             </form>
           </div>
         </div>
@@ -28,20 +31,23 @@
         </div>
         <div class="collapsible-body">
           <div class="row">
-            <form class="col s12">
+            <form class="col s12" method="POST">
               <div class="input-field">
-                <input id="email" type="email" class="validate">
+                <input type="hidden" name="operation" value="create-user">
+                <input id="email" name="email" type="email" class="validate">
                 <label for="email">Email</label>
               </div>
               <div class="input-field">
-                <input id="login" placeholder="Ваш логин" type="text" class="validate">
+                <input id="login" name="login" placeholder="Ваш логин" type="text" class="validate">
                 <label for="login">Логин</label>
               </div>
               <div class="input-field">
-                <input id="password" placeholder="Ваш пароль" type="text" class="validate">
+                <input id="password" name="password" placeholder="Ваш пароль" type="text" class="validate">
                 <label for="password">Пароль</label>
               </div>
-              <a class="waves-effect waves-light btn">Зарегистрироваться</a>
+              <button class="waves-effect waves-light btn">
+                Зарегистрироваться
+              </button>
             </form>
           </div>
         </div>

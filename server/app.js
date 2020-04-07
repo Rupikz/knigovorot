@@ -3,7 +3,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import passport from 'passport';
+// import passport from 'passport';
 import flash from 'connect-flash';
 import cors from 'cors';
 
@@ -22,9 +22,6 @@ const app = express();
 
 // MiddleWare
 
-// app.use(bodyParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors()); // xz zachem, no nado
 app.use(session({
@@ -38,10 +35,13 @@ app.use(session({
 app.use(express.static(`${__dirname}/public/`));
 app.use(flash());
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.post('/token', verifyToken, (req, res, next) => {
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+app.get('/token', verifyToken, (req, res, next) => {
   console.log(req.user);
   next();
 });

@@ -5,7 +5,9 @@ import {
 } from '../helpers/status';
 
 const verifyToken = async (req, res, next) => {
-  const { token } = req.headers;
+  // console.log(req.params);
+  console.log(req.cookies);
+  const { token } = req.cookies;
 
   if (!token) {
     errorMessage.error = 'Token not provided';
