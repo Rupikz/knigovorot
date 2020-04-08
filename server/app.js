@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
@@ -9,14 +8,11 @@ import cors from 'cors';
 
 import config from './config/config';
 import verifyToken from './middleware/verifyAuth';
-import usersController from './controller/usersController';
 
-// import createAllTables from './db/dev/dbConnection';
+// Routers
 
-// require('dotenv').config();
-
-// import pool from './database';
-
+import login from './routes/login';
+import vue from './routes/vue';
 
 const app = express();
 
@@ -34,29 +30,18 @@ app.use(session({
 }));
 app.use(express.static(`${__dirname}/public/`));
 app.use(flash());
-
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use('/login', login);
+app.use('*', vue);
 
-app.get('/token', verifyToken, (req, res, next) => {
-  console.log(req.user);
-  next();
-});
-
-app.post('/login', usersController);
-
-app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'public/index.html')));
-
-
-// pool.query('SELECT NOW()', (err, res) => {
-//   console.log(res.rows);
-//   pool.end();
-// });
-
-// createAllTables(); // создание таблиц
 
 app.listen(config.PORT, () => {
   console.log('server has been started..', config.PORT);

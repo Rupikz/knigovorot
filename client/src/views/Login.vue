@@ -22,6 +22,7 @@
                 Войти
               </button>
             </form>
+            {{ info }}
           </div>
         </div>
       </li>
@@ -49,6 +50,7 @@
                 Зарегистрироваться
               </button>
             </form>
+            
           </div>
         </div>
       </li>
@@ -61,6 +63,20 @@ export default {
     name: 'Login',
     components: {
    
+    },
+    mounted() {
+      // this.$http.get('http://localhost:1337/login')
+      //   .then(result => {
+      //     this.info = result.errorMsg;
+      //   }) 
+      axios
+        .get('localhost:8085/login')
+        .then(response => {
+          console.log(this.info = response);
+          this.info = response;
+        }).catch((error) => {
+          console.log(error);
+        });
     }
 };
 </script>

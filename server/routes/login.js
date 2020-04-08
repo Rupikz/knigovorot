@@ -1,4 +1,8 @@
 import express from 'express';
-import bcrypt from 'bcrypt';
+import usersController from '../controller/usersController';
 
 const login = express.Router('/login');
+
+login.post('/', usersController);
+
+export default login;

@@ -7,6 +7,6 @@ export default {
     cookie_name: 'sid',
     session_store: 'token',
   },
-  COOKIE_TIME: 1000 * 60 * 60 * 24, // Один день походу
+  COOKIE_TIME: 60 * 60 * 24 * 7, // Одина неделя походу
   SECRET_JWT: 'secret',
 };
