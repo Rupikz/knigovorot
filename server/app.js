@@ -13,11 +13,10 @@ import verifyToken from './middleware/verifyAuth';
 
 // Routers
 
-// import login from './routes/login';
 import index from './routes/index';
 import login from './routes/login';
 import books from './routes/books';
-
+import user from './routes/user';
 
 const app = express();
 
@@ -46,9 +45,10 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(path.resolve(__dirname, '../views/partials'));
 
 app.use(verifyToken);
+app.use('/', index);
 app.use('/books', books);
 app.use('/login', login);
-app.use('/', index);
+app.use('/:user', user);
 
 
 app.listen(config.PORT, () => {

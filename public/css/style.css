@@ -104,6 +104,12 @@ border: 2px solid;
     height: 180px;
 }
 
+.card-avatar {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* .card-writer {
 } */
 

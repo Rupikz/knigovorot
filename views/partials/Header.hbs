@@ -15,14 +15,30 @@
           <li>
             <a href="/about">О нас</a>
           </li>
+          {{#if req.user}}
           <li>
-            {{#if req.user}}
-            <a href="/login/logout">Выйти</a>
-            {{else}}
-            <a href="/login">Войти</a>
-            {{/if}}
-            {{!-- <a href="/login">Войти</a> --}}
+            <a href="/{{ req.user.login }}">
+              {{#if req.user.images }}
+                <img src="/images/{{ req.user.login }}.jpg" alt="" width="20px">
+              {{else}}
+                <i class="large material-icons">account_circle</i>
+              {{/if}}
+            </a>
           </li>
+          <li>
+            <a href="/{{ req.user.login }}&likes">
+              <i class="large material-icons">insert_chart</i>
+            </a>
+          </li>
+          <li>
+            <a href="/login/logout">Выйти</a>
+          </li>
+          {{else}}
+          <li>
+            <a href="/login">Войти</a>
+          </li>
+          {{/if}}
+          {{!-- <a href="/login">Войти</a> --}}
         </ul>
       </div>
     </nav>
