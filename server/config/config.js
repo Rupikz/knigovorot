@@ -7,6 +7,9 @@ export default {
     cookie_name: 'sid',
     session_store: 'token',
   },
-  COOKIE_TIME: 60 * 60 * 24 * 7, // Одина неделя походу
+  COOKIE_TIME: 1000 * 60 * 60 * 24 * 7, // Одина неделя
   SECRET_JWT: 'secret',
 };
+
+// sudo lsof -i :3000
+// kill -9 {PID}

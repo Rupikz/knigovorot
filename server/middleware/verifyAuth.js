@@ -1,18 +1,8 @@
 import jwt from 'jsonwebtoken';
 import config from '../config/config';
-import {
-  errorMessage, status,
-} from '../helpers/status';
 
 const verifyToken = async (req, res, next) => {
-  // console.log(req.params);
-  console.log(req.cookies);
   const { token } = req.cookies;
-
-  if (!token) {
-    errorMessage.error = 'Token not provided';
-    return res.status(status.bad).send(errorMessage);
-  }
 
   try {
     const decoded = jwt.verify(token, config.SECRET_JWT);
@@ -28,8 +18,7 @@ const verifyToken = async (req, res, next) => {
 
     next();
   } catch (error) {
-    errorMessage.error = 'Authentication Failed';
-    return res.status(status.unauthorized).send(errorMessage);
+    next(); // переделать
   }
 };
 

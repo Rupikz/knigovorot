@@ -1,24 +1,18 @@
 import moment from 'moment';
-import path from 'path';
 
 import dbQuery from '../db/dev/dbQuery';
 import config from '../config/config';
-import vue from '../routes/vue';
 
 
 import {
   hashPassword,
   comparePassword,
   isValidEmail,
-  isValidLogin,
-  validatePassword,
+  // valid, использовать валидацию
+  isValidatePassword,
   isEmpty,
   generateUserToken,
 } from '../helpers/validations';
-
-import {
-  errorMessage, successMessage, status,
-} from '../helpers/status';
 
 
 const createUser = async (req, res) => {
@@ -28,19 +22,34 @@ const createUser = async (req, res) => {
 
   const createdOn = moment(new Date());
 
-  if (isEmpty(email) || isEmpty(login) || isEmpty(password)) {
-    errorMessage.error = 'Email, password, first name and last name field cannot be empty'; // Заменить на флеш
-    return res.status(status.bad).send(errorMessage);
+  if (isEmpty(email)) {
+    req.flash('error_msg', 'Почта не введена');
   }
+
+  if (isEmpty(login)) {
+    req.flash('error_msg', 'Логин не введен');
+  }
+
+  if (isEmpty(password)) {
+    req.flash('error_msg', 'Пароль не введен');
+  }
+
   if (!isValidEmail(email)) {
-    errorMessage.error = 'Please enter a valid Email';
-    return res.status(status.bad).send(errorMessage);
+    req.flash('error_msg', 'Почта не корректа');
   }
-  if (!validatePassword(password)) {
-    errorMessage.error = 'Password must be more than five(5) characters';
-    return res.status(status.bad).send(errorMessage);
+
+  if (!isValidatePassword(password)) {
+    req.flash('error_msg', 'Пароль должен быть больше 6 символов');
   }
+
+  const errorMsg = req.flash('error_msg');
+
+  if (errorMsg.length) {
+    res.render('login.hbs', { errorMsg });
+  }
+
   const hashedPassword = hashPassword(password);
+  // const login = validLogin(login); // сделать валидацию логина
 
   const createUserQuery = `INSERT INTO
       users(email, login, password, created_on)
@@ -56,21 +65,25 @@ const createUser = async (req, res) => {
 
   try {
     const { rows } = await dbQuery.query(createUserQuery, values);
-    console.log(dbQuery);
-    const dbResponse = rows[0];
-    delete dbResponse.password;
-    const token = generateUserToken(dbResponse.id, dbResponse.email, // исправить порядок или убрать
-      dbResponse.login, dbResponse.admin);
-    successMessage.data = dbResponse;
-    successMessage.data.token = token;
-    return res.status(status.created).send(successMessage);
-  } catch (error) {
-    if (error.routine === '_bt_check_unique') {
-      errorMessage.error = 'User with that EMAIL or Login already exist';
-      return res.status(status.conflict).send(errorMessage);
+
+    if (rows[0]) {
+      req.flash('success_msg', 'Аккаунт успешно создан, войдите');
     }
-    errorMessage.error = 'Operation was not successful';
-    return res.status(status.error).send(errorMessage);
+
+    const successMsg = req.flash('success_msg');
+
+    res.render('login.hbs', { successMsg });
+  } catch (error) {
+    console.log(error);
+    if (error.constraint === 'users_email_key') {
+      req.flash('error_msg', 'Аккаунт с такой почтой уже существует');
+    }
+
+    if (error.constraint === 'users_login_key') {
+      req.flash('error_msg', 'Аккаунт с таким логином уже существует');
+    }
+
+    res.render('login.hbs', { errorMsg: req.flash('error_msg') });
   }
 };
 
@@ -81,7 +94,7 @@ const siginUser = async (req, res, next) => {
     req.flash('error_msg', 'Логин или пароль не введен');
   }
 
-  if (!isValidLogin(login) || !validatePassword(password)) {
+  if (!isValidatePassword(password)) {
     req.flash('error_msg', 'Введите пароль больше 6 символов');
   }
 
@@ -94,38 +107,26 @@ const siginUser = async (req, res, next) => {
 
     console.log('dbResponse', dbResponse);
 
-    // if (!dbResponse) {
-    //   errorMessage.error = 'User with this email does not exist';
-    //   return res.status(status.notfound).send(errorMessage);
-    // }
-
-    // if (!comparePassword(dbResponse.password, password)) {
-    //   errorMessage.error = 'The password you provided is incorrect';
-    //   return res.status(status.bad).send(errorMessage);
-    // }
+    if (!dbResponse) {
+      req.flash('error_msg', 'Неправильный логин или пароль');
+    } else if (!comparePassword(dbResponse.password, password)) {
+      req.flash('error_msg', 'Неправильный логин или пароль');
+    }
 
     const errorMsg = req.flash('error_msg');
 
     if (errorMsg.length) {
-      res.locals.errorMsg = errorMsg;
-      // res.redirect('/login');
-      // res.redirect('/', { errorMsg });
-      // res.json(res.locals);
-      res.sendFile(path.resolve(__dirname, '../public/index.html'), { errorMsg });
+      res.render('login.hbs', { errorMsg });
     } else {
       const token = generateUserToken(dbResponse.id, dbResponse.login,
         dbResponse.email, dbResponse.admin);
-
       delete dbResponse.password;
-      successMessage.data = dbResponse;
-      successMessage.data.token = token;
       res.cookie('token', token, { maxAge: config.COOKIE_TIME, httpOnly: true });
-      return res.status(status.success).send(successMessage);
+      res.redirect('/');
     }
   } catch (error) {
-    console.log(error);
-    errorMessage.error = 'Operation was not successful';
-    return res.status(status.error).send(errorMessage);
+    console.log('Ошибка входа в аккаунт', error);
+    next();
   }
 };
 
@@ -138,8 +139,8 @@ const usersController = (req, res) => {
     return siginUser(req, res);
   }
 
-  errorMessage.error = 'Нет параметра запроса';
-  return res.status(status.error).send(errorMessage);
+  const errorMsg = 'Нет параметра запроса';
+  res.render('login.hbs', { errorMsg });
 };
 
 export default usersController;

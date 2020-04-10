@@ -16,7 +16,12 @@
             <a href="/about">О нас</a>
           </li>
           <li>
+            {{#if req.user}}
+            <a href="/login/logout">Выйти</a>
+            {{else}}
             <a href="/login">Войти</a>
+            {{/if}}
+            {{!-- <a href="/login">Войти</a> --}}
           </li>
         </ul>
       </div>

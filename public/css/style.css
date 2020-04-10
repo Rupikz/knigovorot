@@ -28,7 +28,7 @@ h4 {
     color: midnightblue;
 }
 
-#app {
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -41,6 +41,23 @@ footer {
 .pagination li.active {
     background-color: #424242;
 }
+
+.flash_msg {
+text-align: center;
+padding: 5px 20px;
+border: 2px solid;
+}
+
+.flash_msg.error {
+    border-color: red;
+    color: red;
+}
+
+.flash_msg.success {
+    border-color: green;
+    color: green;
+}
+
 
 /* banners */
 
@@ -87,8 +104,8 @@ footer {
     height: 180px;
 }
 
-.card-writer {
-}
+/* .card-writer {
+} */
 
 .сard-price {
     color: midnightblue;

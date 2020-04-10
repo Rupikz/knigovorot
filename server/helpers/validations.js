@@ -16,8 +16,9 @@ const isValidEmail = (email) => {
   return regEx.test(String(email).toLowerCase());
 };
 
-const isValidLogin = (login) => String(login).toLowerCase().trim(); // Доделать
-const validatePassword = (password) => {
+const valid = (str) => String(str).toLowerCase().trim(); // Доделать
+
+const isValidatePassword = (password) => {
   if (password.length <= 5 || password === '') {
     return false;
   }
@@ -62,8 +63,8 @@ export {
   hashPassword,
   comparePassword,
   isValidEmail,
-  isValidLogin,
-  validatePassword,
+  valid,
+  isValidatePassword,
   isEmpty,
   generateUserToken,
   generateAdminToken,

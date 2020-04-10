@@ -9,7 +9,7 @@ import hbs from 'hbs';
 
 
 import config from './config/config';
-// import verifyToken from './middleware/verifyAuth';
+import verifyToken from './middleware/verifyAuth';
 
 // Routers
 
@@ -38,7 +38,6 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
   next();
 });
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,7 +45,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.resolve(__dirname, '../views/partials'));
 
-// app.use('/login', login);
+app.use(verifyToken);
 app.use('/books', books);
 app.use('/login', login);
 app.use('/', index);
