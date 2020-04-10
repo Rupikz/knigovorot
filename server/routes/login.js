@@ -1,8 +1,10 @@
 import express from 'express';
-import usersController from '../controller/usersController';
+// import usersController from '../controller/usersController';
 
-const login = express.Router('/login');
+const login = express.Router('/');
 
-login.post('/', usersController);
+login.get('/', (req, res) => res.render('login.hbs'));
+
+// login.post('/', usersController);
 
 export default login;
