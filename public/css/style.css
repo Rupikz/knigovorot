@@ -210,12 +210,15 @@ border: 2px solid;
 
 .edit {
     margin: 7.5px 0 15px 0;
-    
 }
 
 .edit form {
-    padding: 30px 20px;
-    height: 300px;
+    padding: 10px 20px;
+}
+
+.btn-save {
+    margin: 10px;
+    text-align: center;
 }
 
 @media screen and (max-width: 600px) {
