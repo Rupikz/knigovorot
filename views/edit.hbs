@@ -33,6 +33,19 @@
                         Сохранить
                     </button>
                 </div>
+                {{#if errorMsg}}
+                    {{#each errorMsg}}
+                        <div class="flash_msg error">
+                            {{this}}<br>
+                        </div>
+                    {{/each}}
+                {{/if}}
+
+                {{#if successMsg}}
+                <div class="flash_msg success">
+                    {{successMsg}}
+                </div>
+                {{/if}}
             </form>
         </div>
     

@@ -1,7 +1,9 @@
 import dbQuery from '../db/dev/dbQuery';
+import config from '../config/config';
 import {
   valid,
   isEmpty,
+  generateUserToken,
 } from '../helpers/validations';
 import updateString from '../db/dev/dbQueryString';
 
@@ -24,12 +26,14 @@ const updateUsers = async (req, res) => {
   }
 
   const errorMsg = req.flash('error_msg');
-  console.log(errorMsg);
 
   if (errorMsg.length) {
-    console.log(errorMsg.length);
-    res.render('edit.hbs', { errorMsg }); // отсановился здесь ошибка не загружается страница
+    return res.render('edit.hbs', { req, errorMsg }); // отсановился здесь ошибка не загружается страница
   }
+
+  const templates = ['first_name', 'last_name', 'phone'];
+
+  const updateUserQuery = updateString(templates, 'id', req.user.id);
 
   const values = [
     valid(firstName),
@@ -37,30 +41,23 @@ const updateUsers = async (req, res) => {
     valid(phone),
   ];
 
-  const updateUserQuery = updateString(values, 'id', req.user.id);
-
-  console.log('data', updateUserQuery, values);
   try {
     const { rows } = await dbQuery.query(updateUserQuery, values);
+    const dbResponse = rows[0];
 
-    if (rows[0]) {
-      req.flash('success_msg', 'Данные обновлены');
-    }
+    const token = generateUserToken(dbResponse.id, dbResponse.login,
+      dbResponse.email, dbResponse.first_name, dbResponse.last_name, dbResponse.created_on,
+      dbResponse.phone, dbResponse.id_image, dbResponse.books, dbResponse.admin);
+    delete dbResponse.password;
+    res.cookie('token', token, { maxAge: config.COOKIE_TIME, httpOnly: true });
 
-    const successMsg = req.flash('success_msg');
-
-    res.render('login.hbs', { successMsg });
+    res.redirect(`/${req.user.login}`);
   } catch (error) {
-    console.log(error);
-    // if (error.constraint === 'users_email_key') {
-    //   req.flash('error_msg', 'Аккаунт с такой почтой уже существует');
-    // }
-
-    // if (error.constraint === 'users_login_key') {
-    //   req.flash('error_msg', 'Аккаунт с таким логином уже существует');
-    // }
-
-    res.render('edit.hbs', { errorMsg: req.flash('error_msg') });
+    console.log('Ошибка в updateUsers:', error);
+    if (error) {
+      req.flash('error_msg', 'Что-то пошло не так');
+    }
+    return res.render('edit.hbs', { req, errorMsg: req.flash('error_msg') });
   }
 };
 

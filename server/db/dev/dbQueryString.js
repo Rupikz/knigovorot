@@ -1,10 +1,13 @@
 const updateString = (arr, field, value) => {
-  let bodyQuery = '';
+  const bodyQueryArr = [];
+
   for (let i = 0; i < arr.length; i += 1) {
-    bodyQuery += `${arr[i]} = $${i} `;
+    bodyQueryArr.push(`${arr[i]} = $${i + 1}`);
   }
 
-  return `UPDATE users SET ${bodyQuery}WHERE ${field} = ${value} returning *`;
+  const bodyQueryStr = bodyQueryArr.join(', ');
+
+  return `UPDATE users SET ${bodyQueryStr} WHERE ${field} = ${value} returning *`;
 };
 
 export default updateString;

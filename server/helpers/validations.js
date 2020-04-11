@@ -16,7 +16,7 @@ const isValidEmail = (email) => {
   return regEx.test(String(email).toLowerCase());
 };
 
-const valid = (str) => String(str).toLowerCase().trim(); // Доделать
+const valid = (str) => String(str).trim(); // Доделать
 
 const isValidatePassword = (password) => {
   if (password.length <= 5 || password === '') {

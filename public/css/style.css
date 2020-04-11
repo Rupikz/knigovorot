@@ -43,9 +43,12 @@ footer {
 }
 
 .flash_msg {
-text-align: center;
-padding: 5px 20px;
-border: 2px solid;
+    width: 40%;
+    text-align: center;
+    padding: 5px 20px;
+    border: 1px solid;
+    margin: 10px auto;
+    border-radius: 7px;
 }
 
 .flash_msg.error {
