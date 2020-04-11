@@ -38,11 +38,18 @@ const isEmpty = (input) => {
   return true;
 };
 
-const generateUserToken = (id, login, email, admin) => {
+const generateUserToken = (id, login, email, firstName, lastName,
+  createdOn, phone, idImage, books, admin) => {
   const token = jwt.sign({
     id,
     login,
     email,
+    first_name: firstName,
+    last_name: lastName,
+    created_on: createdOn,
+    phone,
+    id_image: idImage,
+    books,
     admin,
   },
   config.SECRET_JWT, { expiresIn: '3d' });

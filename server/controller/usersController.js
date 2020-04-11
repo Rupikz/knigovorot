@@ -119,7 +119,8 @@ const siginUser = async (req, res, next) => {
       res.render('login.hbs', { errorMsg });
     } else {
       const token = generateUserToken(dbResponse.id, dbResponse.login,
-        dbResponse.email, dbResponse.admin);
+        dbResponse.email, dbResponse.first_name, dbResponse.last_name, dbResponse.created_on,
+        dbResponse.phone, dbResponse.id_image, dbResponse.books, dbResponse.admin);
       delete dbResponse.password;
       res.cookie('token', token, { maxAge: config.COOKIE_TIME, httpOnly: true });
       res.redirect('/');

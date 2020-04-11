@@ -13,6 +13,10 @@ const verifyToken = async (req, res, next) => {
       email: decoded.email,
       first_name: decoded.first_name,
       last_name: decoded.last_name,
+      created_on: decoded.created_on,
+      phone: decoded.phone,
+      id_image: decoded.id_image,
+      books: decoded.books,
       admin: decoded.admin,
     };
 

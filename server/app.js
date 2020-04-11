@@ -17,6 +17,8 @@ import index from './routes/index';
 import login from './routes/login';
 import books from './routes/books';
 import user from './routes/user';
+import edit from './routes/edit';
+
 
 const app = express();
 
@@ -48,6 +50,8 @@ app.use(verifyToken);
 app.use('/', index);
 app.use('/books', books);
 app.use('/login', login);
+app.use('/edit', edit);
+
 app.use('/:user', user);
 
 
