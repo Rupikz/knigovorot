@@ -1,5 +1,5 @@
 export default {
-  PORT: process.env.PORT || 8085,
+  PORT: process.env.PORT || 8086,
   PROJECT: 'development',
   DB_CONNECT: 'postgresql://postgres:rjkz2010@localhost:5432/development',
   session: {

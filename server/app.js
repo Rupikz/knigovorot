@@ -6,7 +6,6 @@ import path from 'path';
 import flash from 'connect-flash';
 import cors from 'cors';
 import hbs from 'hbs';
-import multer from 'multer';
 
 import config from './config/config';
 import verifyToken from './middleware/verifyAuth';

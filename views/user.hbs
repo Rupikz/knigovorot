@@ -5,17 +5,16 @@
     <div class="row">
       <div class="col s12 m4 l4 xl4">
         <div class="card">
-            <div class="card-avatar" style="background-image: url('./images/users/{{req.user.id_image}}');">
-            </div>
+            <div class="card-avatar" style="background-image: url('./images/users/{{req.profile.id_image}}');"></div>
             <a class="waves-effect waves-light grey darken-3 btn btn-edit" href="/edit">Редактировать</a>
         </div>
       </div>
       <div class="col s12 m8 l8 xl8">
         <div class="grey lighten-5 card-inform">
           <div class="grey darken-3 section">
-            {{#if req.user.first_name}}
-              {{#if req.user.last_name}}
-                <h4>{{req.user.first_name}} {{req.user.last_name}}</h4>
+            {{#if req.profile.first_name}}
+              {{#if req.profile.last_name}}
+                <h4>{{req.profile.first_name}} {{req.profile.last_name}}</h4>
               {{else}}
                 <h4>Имя Фамилия</h4>
               {{/if}}
@@ -27,8 +26,8 @@
             <div class="inform-section">
               <p > Телефон:
                 <b>
-                  {{#if req.user.phone}}
-                    {{req.user.phone}}
+                  {{#if req.profile.phone}}
+                    {{req.profile.phone}}
                   {{else}}
                     Не указан
                   {{/if}}
@@ -36,8 +35,8 @@
               </p>
               <p> Книг было выставленно:
                 <b>
-                  {{#if req.user.books}}
-                    {{req.user.books.length}}
+                  {{#if req.profile.books}}
+                    {{req.profile.books.length}}
                   {{else}}
                     0
                   {{/if}}
@@ -54,8 +53,6 @@
         {{> Cards}}
       </div>
     </div>
-    {{!-- {{ req.user.login }}
-    <h1>Пользователь</h1> --}}
 </div>
 {{> Footer }}
 
