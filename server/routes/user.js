@@ -3,9 +3,9 @@ import dbQuery from '../db/dev/dbQuery';
 
 const user = express.Router('/');
 
-user.get('/', async (req, res) => {
+user.get('/', async (req, res, next) => {
   const loginUrl = req.originalUrl.slice(1);
-  const selectUserQuery = 'SELECT id, first_name, last_name, created_on, phone, id_image, books FROM public.users WHERE login = $1';
+  const selectUserQuery = 'SELECT id, login, first_name, last_name, created_on, phone, id_image, books FROM public.users WHERE login = $1';
   const values = [
     loginUrl,
   ];
@@ -13,8 +13,18 @@ user.get('/', async (req, res) => {
   try {
     const { rows } = await dbQuery.query(selectUserQuery, values);
     const profile = rows[0];
+    let isYou = false;
+
+    if (!profile) {
+      return next();
+    }
+
+    if (profile.login === req.user.login) {
+      isYou = true;
+    }
+
     req.profile = profile;
-    return res.render('user.hbs', { req });
+    return res.render('user.hbs', { req, isYou });
   } catch (error) {
     console.log('Ошибка в отображении пользователя:', error);
     if (error) {

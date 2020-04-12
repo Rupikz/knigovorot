@@ -61,6 +61,14 @@ footer {
     color: green;
 }
 
+.btn {
+    background-color: Darkslategray;
+}
+
+.btn:hover {
+    background-color: #004d40;
+}
+
 
 /* banners */
 
@@ -196,8 +204,8 @@ footer {
 }
 
 .card-inform {
-    height: 236px;
-    margin: 7.5px 0 15px 0;
+    height: 200px;
+    margin: 7.5px 0 0 0;
 }
 
 .card-inform .section, .books-section{
@@ -211,6 +219,7 @@ footer {
 
 .inform-section {
     color: black;
+    font-size: 16px;
 }
 
 /* edit */
@@ -227,6 +236,7 @@ footer {
     margin: 10px;
     text-align: center;
 }
+
 
 @media screen and (max-width: 600px) {
     .preview-minor {

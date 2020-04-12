@@ -17,6 +17,7 @@ import login from './routes/login';
 import books from './routes/books';
 import user from './routes/user';
 import edit from './routes/edit';
+import notFound from './routes/notFound';
 
 
 const app = express();
@@ -44,17 +45,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.resolve(__dirname, '../views/partials'));
-// app.use(multer({
-//   dest: 'public/images/users',
-// }).single('file-avatar'));
 
 app.use(verifyToken);
 app.use('/', index);
 app.use('/books', books);
 app.use('/login', login);
 app.use('/edit', edit);
-
 app.use('/:user', user);
+app.use('/:not_found', notFound);
 
 
 app.listen(config.PORT, () => {

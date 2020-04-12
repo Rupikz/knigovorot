@@ -6,7 +6,11 @@
       <div class="col s12 m4 l4 xl4">
         <div class="card">
             <div class="card-avatar" style="background-image: url('./images/users/{{req.profile.id_image}}');"></div>
+            {{#if isYou}}
             <a class="waves-effect waves-light grey darken-3 btn btn-edit" href="/edit">Редактировать</a>
+            {{else}}
+            <a class="waves-effect waves-light grey darken-3 btn btn-edit" href="/">Написать</a>
+            {{/if}}
         </div>
       </div>
       <div class="col s12 m8 l8 xl8">
@@ -45,6 +49,8 @@
             </div>
           </div>
         </div>
+            <a class="waves-effect waves-light btn btn-edit" href="/">Добавить книгу</a>
+
       </div>
       <div class="col s12">
         <div class="grey darken-3 books-section">
