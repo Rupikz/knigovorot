@@ -1,9 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import config from '../config/config';
-// import {
-//   errorMessage, status,
-// } from './status';
 
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);

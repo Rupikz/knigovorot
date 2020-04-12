@@ -200,13 +200,17 @@ footer {
     margin: 7.5px 0 15px 0;
 }
 
-.card-inform .name-section, .books-section{
+.card-inform .section, .books-section{
     padding: 5px 15px;   
     color: white; 
 }
 
 .books-section h4{
     margin: 0; 
+}
+
+.inform-section {
+    color: black;
 }
 
 /* edit */

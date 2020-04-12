@@ -6,7 +6,7 @@ import path from 'path';
 import flash from 'connect-flash';
 import cors from 'cors';
 import hbs from 'hbs';
-
+import multer from 'multer';
 
 import config from './config/config';
 import verifyToken from './middleware/verifyAuth';
@@ -45,6 +45,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.resolve(__dirname, '../views/partials'));
+// app.use(multer({
+//   dest: 'public/images/users',
+// }).single('file-avatar'));
 
 app.use(verifyToken);
 app.use('/', index);
