@@ -17,6 +17,7 @@ import login from './routes/login';
 import books from './routes/books';
 import user from './routes/user';
 import edit from './routes/edit';
+import addbook from './routes/addbook';
 import notFound from './routes/notFound';
 
 
@@ -51,6 +52,7 @@ app.use('/', index);
 app.use('/books', books);
 app.use('/login', login);
 app.use('/edit', edit);
+app.use('/addbook', addbook);
 app.use('/:user', user);
 app.use('/:not_found', notFound);
 

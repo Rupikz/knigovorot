@@ -3,7 +3,7 @@
 {{> Header }}
 <div class="container">
         <h4>Настройка профиля</h4>
-        <div class="grey lighten-5 edit">
+        <div class="grey lighten-5 edit row">
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="input-field col s12 m6">
                     <input id="first_name" type="text" class="validate" name="first_name" value="{{req.user.first_name}}">
@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-field col s12">
                     <i class="material-icons prefix">phone</i>
-                    <input id="phone" type="tel" class="validate" name="phone" value="{{req.user.phone}}">
+                    <input id="phone" type="number" class="validate" name="phone" value="{{req.user.phone}}">
                     <label for="phone">Телефон</label>
                 </div>
                 <div class="file-field input-field col s12">

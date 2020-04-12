@@ -1,0 +1,68 @@
+{{> Head }}
+{{> Header }}
+<div class="container">
+        <h4>Добавить книгу</h4>
+        <div class="grey lighten-5 edit row">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class="input-field col s12">
+                    <input id="name_book" type="text" class="validate" name="name_book">
+                    <label for="name_book">Название книги</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="athor_book" type="text" class="validate" name="athor_book">
+                    <label for="athor_book">Автор книги</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="genre" type="text" class="validate" name="genre">
+                    <label for="genre">Жанр</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="subgenre" type="text" class="validate" name="subgenre">
+                    <label for="subgenre">Поджанр</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input id="publisher" type="text" class="validate" name="publisher">
+                    <label for="publisher">Издатель</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input id="year" type="number" class="validate" name="year">
+                    <label for="year">Год издания</label>
+                </div>
+                <div class="input-field col s12 m4">
+                    <input id="price" type="number" class="validate" name="price">
+                    <label id="price-label" for="price">Цена</label>
+                </div>
+                <div class="file-field input-field col s12">
+                    <div class="btn">
+                        <span>Загрузить</span>
+                        <input type="file" name="file-avatar">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" id="file" type="text">
+                        <label for="file">Изображения книги</label>
+                    </div>
+                </div>
+                <div class="btn-save">
+                    <button class="waves-effect waves-light btn ">
+                        Сохранить
+                    </button>
+                </div>
+                {{#if errorMsg}}
+                    {{#each errorMsg}}
+                        <div class="flash_msg error">
+                            {{this}}<br>
+                        </div>
+                    {{/each}}
+                {{/if}}
+
+                {{#if successMsg}}
+                <div class="flash_msg success">
+                    {{successMsg}}
+                </div>
+                {{/if}}
+            </form>
+        </div>
+    
+</div>
+{{> Footer }}
+

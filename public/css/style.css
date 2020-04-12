@@ -237,7 +237,6 @@ footer {
     text-align: center;
 }
 
-
 @media screen and (max-width: 600px) {
     .preview-minor {
         display: none;
