@@ -36,7 +36,6 @@ const createTableBooks = () => {
   name_book VARCHAR(100) NOT NULL,
   author_book VARCHAR(100) NOT NULL,
   genre SMALLINT NOT NULL,
-  subgenre SMALLINT NOT NULL,
   year SMALLINT NOT NULL,
   publisher VARCHAR(100),
   price money NOT NULL)`;

@@ -51,14 +51,14 @@ footer {
     border-radius: 7px;
 }
 
-.flash_msg.error {
-    border-color: red;
-    color: red;
+.error {
+    background-color: rgba(175, 35, 35, 0.14);
+    color: black;
 }
 
-.flash_msg.success {
-    border-color: green;
-    color: green;
+.success {
+    background-color: rgba(25, 223, 18, 0.14);
+    color: black;
 }
 
 .btn {

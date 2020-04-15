@@ -1,9 +1,13 @@
-$(document).ready(function () {
+$(document).ready(() => {
   $('.sidenav').sidenav({
-    closeOnClick: true
+    closeOnClick: true,
   });
 });
 
-$(document).ready(function(){
+$(document).ready(() => {
   $('.collapsible').collapsible();
+});
+
+$(document).ready(() => {
+  $('select').formSelect();
 });
