@@ -5,14 +5,20 @@ const user = express.Router('/');
 
 user.get('/', async (req, res, next) => {
   const loginUrl = req.originalUrl.slice(1);
-  const selectUserQuery = 'SELECT id, login, first_name, last_name, created_on, phone, id_image, books FROM public.users WHERE login = $1';
-  const values = [
+  const selectUserQuery = 'SELECT id, login, first_name, last_name, created_on, phone, id_image FROM public.users WHERE login = $1';
+  const valuesUser = [
     loginUrl,
   ];
-
+  const selectUserBooksQuery = 'SELECT id, name_book, author_book, price, id_image_book FROM public.books WHERE id_user = $1';
+  const valuesUserBooks = [
+    req.user.id,
+  ];
   try {
-    const { rows } = await dbQuery.query(selectUserQuery, values);
-    const profile = rows[0];
+    const userRows = await dbQuery.query(selectUserQuery, valuesUser);
+    const profile = userRows.rows[0];
+    const booksRows = await dbQuery.query(selectUserBooksQuery, valuesUserBooks);
+    const userBooks = booksRows.rows || false;
+
     let isYou = false;
 
     if (!profile) {
@@ -24,7 +30,7 @@ user.get('/', async (req, res, next) => {
     }
 
     req.profile = profile;
-    return res.render('user.hbs', { req, isYou });
+    return res.render('user.hbs', { req, books: userBooks, isYou });
   } catch (error) {
     console.log('Ошибка в отображении пользователя:', error);
     if (error) {

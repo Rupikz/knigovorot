@@ -11,7 +11,7 @@ const upload = multer({
   },
 });
 
-addbook.post('/', upload.array('files-book', 8), async (req, res, next) => {
+addbook.post('/', upload.array('files-book', 8), async (req, res) => {
   const imageName = [];
   req.files.map((file) => imageName.push(file.filename));
   const insertBookQuery = `INSERT INTO public.books(
