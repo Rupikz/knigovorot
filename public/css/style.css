@@ -9,6 +9,13 @@ h4 {
     font-family: BravoRG;
 }
 
+.default {
+    text-align: center;
+    text-transform: uppercase;
+    color: #42424263;
+    padding: 20px 0;
+}
+
 .title{
     /* Сделать единые стили для названий */
     color: midnightblue;
@@ -40,15 +47,6 @@ footer {
 
 .pagination li.active {
     background-color: #424242;
-}
-
-.flash_msg {
-    width: 40%;
-    text-align: center;
-    padding: 5px 20px;
-    border: 1px solid;
-    margin: 10px auto;
-    border-radius: 7px;
 }
 
 .error {
@@ -149,7 +147,15 @@ footer {
 
 .collapsible-body {
     border: 0px;
-    padding: 0 25px;
+    padding: 0 5px;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #004d40;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #004d40;
 }
 
 .collapsible-body p {

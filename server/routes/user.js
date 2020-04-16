@@ -10,15 +10,12 @@ user.get('/', async (req, res, next) => {
     loginUrl,
   ];
   const selectUserBooksQuery = 'SELECT id, name_book, author_book, price, id_image_book FROM public.books WHERE id_user = $1';
-  const valuesUserBooks = [
-    req.user.id,
-  ];
   try {
     const userRows = await dbQuery.query(selectUserQuery, valuesUser);
     const profile = userRows.rows[0];
-    const booksRows = await dbQuery.query(selectUserBooksQuery, valuesUserBooks);
+    const booksRows = await dbQuery.query(selectUserBooksQuery, [profile.id]);
     const userBooks = booksRows.rows || false;
-
+    console.log(userBooks);
     let isYou = false;
 
     if (!profile) {

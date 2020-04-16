@@ -44,6 +44,12 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+hbs.registerHelper('if_eq', (a, b, opts) => {
+  if (a === b) {
+    return opts.fn(this);
+  }
+  return opts.inverse(this);
+});
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.resolve(__dirname, '../views/partials'));
 
