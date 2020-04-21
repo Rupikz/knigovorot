@@ -1,5 +1,5 @@
 import express from 'express';
-import dbQuery from '../db/dev/dbQuery';
+import dbQuery from '../db/dbQuery';
 
 const user = express.Router('/');
 

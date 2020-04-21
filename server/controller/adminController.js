@@ -1,12 +1,12 @@
 import moment from 'moment';
 
-import dbQuery from '../db/dev/dbQuery';
+import dbQuery from '../db/dbQuery';
 
 import {
   hashPassword,
   isValidEmail,
-  isValidLogin,
-  validatePassword,
+  valid,
+  isValidatePassword,
   isEmpty,
   generateUserToken,
 } from '../helpers/validations';
@@ -41,12 +41,12 @@ const createAdmin = async (req, res) => {
     return res.status(status.bad).send(errorMessage);
   }
 
-  if (!isValidLogin(login)) {
+  if (!valid(login)) {
     errorMessage.error = 'Please enter a valid Login';
     return res.status(status.bad).send(errorMessage);
   }
 
-  if (!validatePassword(password)) {
+  if (!isValidatePassword(password)) {
     errorMessage.error = 'Password must be more than five(5) characters';
     return res.status(status.bad).send(errorMessage);
   }

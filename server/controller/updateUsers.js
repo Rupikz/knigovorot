@@ -1,11 +1,11 @@
-import dbQuery from '../db/dev/dbQuery';
+import dbQuery from '../db/dbQuery';
 import config from '../config/config';
 import {
   valid,
   isEmpty,
   generateUserToken,
 } from '../helpers/validations';
-import updateString from '../db/dev/dbQueryString';
+import updateString from '../db/dbQueryString';
 
 
 const updateUser = async (req, res) => {

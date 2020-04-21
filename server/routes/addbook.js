@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import dbQuery from '../db/dev/dbQuery';
+import dbQuery from '../db/dbQuery';
 
 const addbook = express.Router('/');
 
