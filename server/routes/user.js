@@ -29,11 +29,12 @@ user.get('/', async (req, res, next) => {
     req.profile = profile;
     return res.render('user.hbs', { req, books: userBooks, isYou });
   } catch (error) {
-    console.log('Ошибка в отображении пользователя:', error);
-    if (error) {
-      req.flash('error_msg', 'Что-то пошло не так');
-    }
-    return res.render('user.hbs', { req, errorMsg: req.flash('error_msg') });
+    // console.log('Ошибка в отображении пользователя:', error);
+    // if (error) {
+    //   req.flash('error_msg', 'Что-то пошло не так');
+    // }
+    // return res.render('user.hbs', { req, errorMsg: req.flash('error_msg') });
+    return next();
   }
 });
 
