@@ -121,8 +121,19 @@ footer {
     height: 200px;
 }
 
-/* .card-writer {
-} */
+.card-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 60px;
+}
+
+span.card-writer {
+    display:block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 20px;
+
+}
 
 .сard-price {
     color: midnightblue;

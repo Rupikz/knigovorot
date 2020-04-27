@@ -9,14 +9,15 @@
             Художественная литература
           </div>
           <div class="collapsible-body">
-            {{#each genresArt}}
-            <p>
-              <label>
-                <input name="genres-art" value="{{ this.id }}" type="radio" />
-                <span>{{ this.genres }}</span>
-              </label><br />
-              </p>
-            {{/each}}
+            <ul class="collection">
+              {{#each genresArt}}
+                <li class="collection-item">
+                  <a href="?genres={{ this.id }}">
+                    {{ this.genres }}
+                  </a>
+                </li>
+              {{/each}}
+              </ul>
           </div>
         </li>
         <li>
@@ -24,14 +25,15 @@
             Не художественная литература
           </div>
           <div class="collapsible-body">
-            {{#each genresNoArt}}
-              <p>
-                <label>
-                  <input name="genres-no-art" value="{{ this.id }}" type="radio" />
-                  <span>{{ this.genres }}</span>
-                </label><br />
-              </p>
+            <ul class="collection">
+              {{#each genresNoArt}}
+              <li class="collection-item">
+                <a href="?genres={{ this.id }}">
+                  {{ this.genres }}
+                </a>
+              </li>
             {{/each}}
+            </ul>
           </div>
         </li>
         <li>
@@ -39,14 +41,15 @@
             Издательство
           </div>
           <div class="collapsible-body">
-            {{#each publisher}}
-              <p>
-                <label>
-                  <input name="publisher" value="{{ this.id }}" type="radio">
-                  <span>{{ this.publisher }}</span>
-                </label>
-              </p>
-            {{/each}}
+            <ul class="collection">
+              {{#each publisher}}
+                <li class="collection-item">
+                  <a href="?publisher={{ this.id }}">
+                    {{ this.publisher }}
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
           </div>
         </li>
       </ul>
