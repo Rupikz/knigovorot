@@ -1,0 +1,59 @@
+{{> Head }}
+
+{{> Header }}
+<div class="container">
+    <div class="row">
+      <div class="col s12 m4 l4 xl4">
+        <div class="card">
+            <div class="card-avatar" style="background-image: url('./images/users/{{req.profile.id_image}}');"></div>
+            {{#if isYou}}
+            <a class="waves-effect waves-light grey darken-3 btn btn-edit" href="/edit">Редактировать</a>
+            {{else}}
+            <a class="waves-effect waves-light grey darken-3 btn btn-edit" href="/">Написать</a>
+            {{/if}}
+        </div>
+      </div>
+      <div class="col s12 m8 l8 xl8">
+        <div class="grey lighten-5 card-inform">
+          <div class="grey darken-3 section">
+            {{#if req.profile.first_name}}
+              {{#if req.profile.last_name}}
+                <h4>{{req.profile.first_name}} {{req.profile.last_name}}</h4>
+              {{else}}
+                <h4>Имя Фамилия</h4>
+              {{/if}}
+            {{else}}
+            <h4>Имя Фамилия</h4>
+            {{/if}}
+          </div>
+          <div class="section">
+            <div class="inform-section">
+              <p > Телефон:
+                <b>
+                  {{#if req.profile.phone}}
+                    {{req.profile.phone}}
+                  {{else}}
+                    Не указан
+                  {{/if}}
+                </b>
+              </p>
+              <p> Книг было выставленно:
+                <b>
+                  {{books.length}}
+                </b>
+              </p>
+            </div>
+          </div>
+        </div>
+        <a class="waves-effect waves-light btn btn-edit" href="/addbook">Добавить книгу</a>
+      </div>
+      <div class="col s12">
+        <div class="grey darken-3 books-section">
+          <h4>Книги пользователя:</h4>
+        </div>
+        {{> Cards books}}
+      </div>
+    </div>
+</div>
+{{> Footer }}
+

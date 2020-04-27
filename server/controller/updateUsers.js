@@ -5,7 +5,7 @@ import {
   isEmpty,
   generateUserToken,
 } from '../helpers/validations';
-import updateString from '../db/dbQueryString';
+import { updateString } from '../db/dbQueryString';
 
 
 const updateUser = async (req, res) => {

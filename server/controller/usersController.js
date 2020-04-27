@@ -105,8 +105,6 @@ const siginUser = async (req, res, next) => {
     const { rows } = await dbQuery.query(signinUserQuery, values);
     const dbResponse = rows[0];
 
-    // console.log('dbResponse', dbResponse);
-
     if (!dbResponse) {
       req.flash('error_msg', 'Неправильный логин или пароль');
     } else if (!comparePassword(dbResponse.password, password)) {

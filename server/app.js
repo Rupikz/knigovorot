@@ -34,7 +34,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
-app.use(express.static(path.resolve(__dirname, '../public')));
+app.use(express.static(path.resolve(__dirname, '../client')));
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
@@ -43,12 +43,12 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-hbs.registerHelper('if_eq', (a, b, opts) => {
-  if (a === b) {
-    return opts.fn(this);
-  }
-  return opts.inverse(this);
-});
+// hbs.registerHelper('if_eq', (a, b, opts) => {
+//   if (a === b) {
+//     return opts.fn(this);
+//   }
+//   return opts.inverse(this);
+// });
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.resolve(__dirname, '../views/partials'));
 

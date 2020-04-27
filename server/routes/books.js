@@ -7,6 +7,7 @@ books.get('/', async (req, res) => {
   const selectArtGenresQuery = 'SELECT * FROM public.genres WHERE art = \'yes\'';
   const selectNoArtGenresQuery = 'SELECT * FROM public.genres WHERE art = \'no\'';
   const selectPublisherQuery = 'SELECT * FROM public.publisher';
+  const selectBooksQuery = 'SELECT * FROM public.books LIMIT 20';
 
   try {
     const rowsGenresArt = await dbQuery.query(selectArtGenresQuery);
@@ -15,8 +16,11 @@ books.get('/', async (req, res) => {
     const genresNoArt = rowsGenresNoArt.rows;
     const rowsPublisher = await dbQuery.query(selectPublisherQuery);
     const publisher = rowsPublisher.rows;
+    const rowsBooks = await dbQuery.query(selectBooksQuery);
+    const booksBd = rowsBooks.rows;
+
     return res.render('books.hbs', {
-      req, genresArt, genresNoArt, publisher,
+      req, genresArt, genresNoArt, publisher, booksBd,
     });
   } catch (error) {
     console.log('Ошибка в загрузке жанров из бд:', error);

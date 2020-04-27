@@ -15,7 +15,6 @@ user.get('/', async (req, res, next) => {
     const profile = userRows.rows[0];
     const booksRows = await dbQuery.query(selectUserBooksQuery, [profile.id]);
     const userBooks = booksRows.rows || false;
-    console.log(userBooks);
     let isYou = false;
 
     if (!profile) {

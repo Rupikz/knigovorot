@@ -1,0 +1,18 @@
+{{> Head }}
+
+{{> Header }}
+<div class="container">
+  {{> Banners}}
+  <h4 class="section-name">
+      Художественная литература <span class="watch-more"><a>Смотреть еще ></a></span>
+  </h4>
+  <h4 class="section-name">
+    Научпоп <span class="watch-more"><a>Смотреть еще ></a></span>
+  </h4>
+
+  {{#each books}}
+    {{> Cards this}}
+  {{/each}}
+</div>
+{{> Footer }}
+

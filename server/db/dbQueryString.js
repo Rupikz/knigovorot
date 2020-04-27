@@ -10,4 +10,15 @@ const updateString = (arr, field, value) => {
   return `UPDATE users SET ${bodyQueryStr} WHERE ${field} = ${value} returning *`;
 };
 
-export default updateString;
+const selectBooksByGenreString = (arr) => {
+  const selectQuery = [];
+
+  for (let i = 0; i < arr.length; i += 1) {
+    selectQuery.push(`SELECT * FROM public.books WHERE genre_id = ${arr[i]}`);
+  }
+
+  return selectQuery;
+};
+
+
+export { updateString, selectBooksByGenreString };

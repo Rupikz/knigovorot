@@ -5,7 +5,7 @@ import dbQuery from '../db/dbQuery';
 const addbook = express.Router('/');
 
 const upload = multer({
-  dest: 'public/images/books',
+  dest: 'client/images/books',
   limits: {
     fileSize: 100000000,
   },
@@ -15,7 +15,7 @@ addbook.post('/', upload.array('files-book', 8), async (req, res) => {
   const imageName = [];
   req.files.map((file) => imageName.push(file.filename));
   const insertBookQuery = `INSERT INTO public.books(
-    name_book, author_book, genre, publisher, year, price, id_user, id_image_book)
+    name_book, author_book, genre_id, publisher_id, year, price, id_user, id_image_book)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
   const {
     name_book: nameBook, athor_book: athorBook, genre, publisher, year, price,
@@ -45,6 +45,7 @@ addbook.get('/', async (req, res, next) => {
     const genres = rowsGenres.rows;
     const rowsPublisher = await dbQuery.query(selectPublisherQuery);
     const publisher = rowsPublisher.rows;
+
     return res.render('addbook.hbs', { req, genres, publisher });
   } catch (error) {
     console.log('Ошибка в загрузке жанров из бд:', error);

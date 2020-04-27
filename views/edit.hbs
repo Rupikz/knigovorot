@@ -1,0 +1,54 @@
+{{> Head }}
+
+{{> Header }}
+<div class="container">
+        <h4>Настройка профиля</h4>
+        <div class="grey lighten-5 edit row">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class="input-field col s12 m6">
+                    <input id="first_name" type="text" class="validate" name="first_name" value="{{req.user.first_name}}">
+                    <label for="first_name">Имя</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="last_name" type="text" class="validate" name="last_name" value="{{req.user.last_name}}">
+                    <label for="last_name">Фамилия</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="phone" type="number" class="validate" name="phone" value="{{req.user.phone}}">
+                    <label for="phone">Телефон</label>
+                </div>
+                <div class="file-field input-field col s12">
+                    <div class="btn">
+                        <span>Загрузить</span>
+                        <input type="file" name="file-avatar">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" id="file" type="text">
+                        <label for="file">Изображение или фотографию</label>
+                    </div>
+                </div>
+                <div class="btn-save">
+                    <button class="waves-effect waves-light btn ">
+                        Сохранить
+                    </button>
+                </div>
+                {{#if errorMsg}}
+                    {{#each errorMsg}}
+                        <div class="flash_msg error">
+                            {{this}}<br>
+                        </div>
+                    {{/each}}
+                {{/if}}
+
+                {{#if successMsg}}
+                <div class="flash_msg success">
+                    {{successMsg}}
+                </div>
+                {{/if}}
+            </form>
+        </div>
+    
+</div>
+{{> Footer }}
+

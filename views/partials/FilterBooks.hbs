@@ -1,0 +1,54 @@
+  <div class="filter-bar">
+    <h4 class="title">
+      Настройка поиска
+    </h4>
+    <form action="#">
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header">
+            Художественная литература
+          </div>
+          <div class="collapsible-body">
+            {{#each genresArt}}
+            <p>
+              <label>
+                <input name="genres-art" value="{{ this.id }}" type="radio" />
+                <span>{{ this.genres }}</span>
+              </label><br />
+              </p>
+            {{/each}}
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            Не художественная литература
+          </div>
+          <div class="collapsible-body">
+            {{#each genresNoArt}}
+              <p>
+                <label>
+                  <input name="genres-no-art" value="{{ this.id }}" type="radio" />
+                  <span>{{ this.genres }}</span>
+                </label><br />
+              </p>
+            {{/each}}
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            Издательство
+          </div>
+          <div class="collapsible-body">
+            {{#each publisher}}
+              <p>
+                <label>
+                  <input name="publisher" value="{{ this.id }}" type="radio">
+                  <span>{{ this.publisher }}</span>
+                </label>
+              </p>
+            {{/each}}
+          </div>
+        </li>
+      </ul>
+    </form>
+  </div>
