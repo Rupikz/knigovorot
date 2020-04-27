@@ -2,7 +2,7 @@
 node_modules
 /dist
 server/public
-/client
+/client/images
 /public/images
 
 # local env files
