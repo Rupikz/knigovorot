@@ -14,27 +14,43 @@
         {{> Bookshelf }}
         
         <ul class="pagination">
-          <li class="disabled">
-            <a href="#!"><i class="material-icons">chevron_left</i></a>
-          </li>
-          <li class="active">
-            <a href="#!">1</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!">2</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!">3</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!">4</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!">5</a>
-          </li>
-          <li class="waves-effect">
-            <a href="#!"><i class="material-icons">chevron_right</i></a>
-          </li>
+          {{#with paginationMenu.chevronLeft}}
+            {{#if active}}
+              <li class="waves-effect">
+                <a href="?pages={{page}}"><i class="material-icons">chevron_left</i></a>
+              </li>
+            {{else}}
+              <li class="disabled">
+                <a href=""><i class="material-icons">chevron_left</i></a>
+              </li>
+            {{/if}}
+          {{/with}}
+
+          {{#each paginationMenu.pagination}}
+            {{#with this}}
+              {{#if this.active}}
+                <li class="active">
+                  <a href="?pages={{this.page}}">{{this.page}}</a>
+                </li>
+              {{else}}
+                <li class="waves-effect">
+                  <a href="?pages={{this.page}}">{{this.page}}</a>
+                </li>
+              {{/if}}
+            {{/with}}
+          {{/each}}
+
+          {{#with paginationMenu.chevronRight}}
+            {{#if active}}
+              <li class="waves-effect">
+                <a href="?pages={{page}}"><i class="material-icons">chevron_right</i></a>
+              </li>
+            {{else}}
+              <li class="disabled">
+                <a href=""><i class="material-icons">chevron_right</i></a>
+              </li>
+            {{/if}}
+          {{/with}}
         </ul>
       </div>
     </div>
