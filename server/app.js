@@ -9,6 +9,8 @@ import hbs from 'hbs';
 
 import config from './config/config';
 import verifyToken from './middleware/verifyAuth';
+import verifyAdmin from './middleware/verifyAdmin';
+
 
 // Routers
 
@@ -18,6 +20,7 @@ import books from './routes/books';
 import user from './routes/user';
 import edit from './routes/edit';
 import addbook from './routes/addbook';
+import adminPanel from './routes/adminPanel';
 import notFound from './routes/notFound';
 
 const app = express();
@@ -54,6 +57,7 @@ app.use('/login', login);
 app.use('/edit', edit);
 app.use('/addbook', addbook);
 app.use('/:user', user);
+app.use('/admin', verifyAdmin, adminPanel);
 app.use('/:not_found', notFound);
 
 

@@ -16,29 +16,33 @@
             <a href="/about">О нас</a>
           </li>
           {{#if req.user}}
-          <li>
-            <a href="/{{ req.user.login }}">
-              {{#if req.user.images }}
-                <img src="/images/{{ req.user.login }}.jpg" alt="" width="20px">
-              {{else}}
-                <i class="large material-icons">account_circle</i>
-              {{/if}}
-            </a>
-          </li>
-          <li>
-            <a href="/{{ req.user.login }}&likes">
-              <i class="large material-icons">favorite_border</i>
-            </a>
-          </li>
-          <li>
-            <a href="/login/logout">Выйти</a>
-          </li>
+            <li>
+              <a href="/{{ req.user.login }}">
+                {{#if req.user.images }}
+                  <img src="/images/{{ req.user.login }}.jpg" alt="" width="20px">
+                {{else}}
+                  <i class="large material-icons">account_circle</i>
+                {{/if}}
+              </a>
+            </li>
+            <li>
+              <a href="/{{ req.user.login }}&likes">
+                <i class="large material-icons">favorite_border</i>
+              </a>
+            </li>
+            <li>
+              <a href="/login/logout">Выйти</a>
+            </li>
           {{else}}
-          <li>
-            <a href="/login">Войти</a>
-          </li>
+            <li>
+              <a href="/login">Войти</a>
+            </li>
           {{/if}}
-          {{!-- <a href="/login">Войти</a> --}}
+          {{#if req.user.admin}}
+            <li>
+              <a href="/admin">Админ панель</a>
+            </li>
+          {{/if}}
         </ul>
       </div>
     </nav>

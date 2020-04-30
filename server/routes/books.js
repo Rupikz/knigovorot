@@ -96,7 +96,7 @@ books.get('/', async (req, res) => {
     const rowsCount = await dbQuery.query(selectCountBooks);
     const booksCount = rowsCount.rows[0].count;
     const paginationMenu = createPagination(numberPages, booksCount);
-    console.log(paginationMenu);
+    console.log(paginationMenu); // Лог вывода книг (books)
     return res.render('books.hbs', {
       req, genresArt, genresNoArt, publisher, booksBd, numberPages, paginationMenu,
     });
