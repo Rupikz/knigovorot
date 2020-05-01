@@ -14,7 +14,7 @@ const selectBooksByGenreString = (arr) => {
   const selectQuery = [];
 
   for (let i = 0; i < arr.length; i += 1) {
-    selectQuery.push(`SELECT * FROM public.books WHERE genre_id = ${arr[i]}`);
+    selectQuery.push(`SELECT * FROM public.books WHERE genre_id = ${arr[i]} LIMIT 4`);
   }
 
   return selectQuery;
