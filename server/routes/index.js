@@ -1,4 +1,6 @@
 import express from 'express';
+import path from 'path';
+import fs from 'fs';
 
 import dbQuery from '../db/dbQuery';
 import { selectBooksByGenreString } from '../db/dbQueryString';
@@ -20,8 +22,11 @@ index.get('/', async (req, res) => {
     books: rowsBooks2.rows,
   });
   try {
+    const pathToFile = path.resolve(__dirname, '../config/configPictures.json');
+    const fileContents = JSON.parse(fs.readFileSync(pathToFile, 'utf8'));
+
     return res.render('index.hbs', {
-      req, sectionBooks,
+      req, sectionBooks, fileContents,
     });
   } catch (error) {
     console.log('Ошибка в загрузке книг из бд:', error);

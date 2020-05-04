@@ -3,7 +3,7 @@
 <div class="container">
   <h4>Админ панель</h4>
   {{#if isAdmin}}
-    <form action="/" method="POST">
+    <form action="/admin" method="POST" enctype="multipart/form-data">
       <div class="row banners">
         <div class="col l8 m8 s12">
           <div class="preview-main">
@@ -11,14 +11,14 @@
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Загрузить картинку</span>
-                  <input type="file">
+                  <input type="file" name="picture1">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">
                 </div>
               </div>
             </div>
-            <img src="images/books/1b82227209dcb1e55b618ec509af5aef" alt="">
+            <img src="images/preview/{{fileContents.first}}" alt="">
           </div>
         </div>
         <div class="col l4 m4">
@@ -27,14 +27,14 @@
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Загрузить картинку</span>
-                  <input type="file">
+                  <input type="file" name="picture2">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">
                 </div>
               </div>
             </div>
-            <img src="images/books/1b82227209dcb1e55b618ec509af5aef" alt="">
+            <img src="images/preview/{{fileContents.second}}" alt="">
           </div>
         </div>
         <div class="col l4 m4">
@@ -43,14 +43,14 @@
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Загрузить картинку</span>
-                  <input type="file">
+                  <input type="file" name="picture3">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">
                 </div>
               </div>
             </div>
-            <img src="images/books/1b82227209dcb1e55b618ec509af5aef" alt="">
+            <img src="images/preview/{{fileContents.third}}" alt="">
           </div>
         </div>
       </div>
