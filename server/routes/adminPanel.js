@@ -23,6 +23,7 @@ const admin = express.Router('/');
 
 admin.post('/', upload.fields(fieldsFiles), (req, res) => {
   const pathToFile = path.resolve(__dirname, '../config/configPictures.json');
+  console.log(req.files);
   if (req.files) {
     const fileContents = JSON.parse(fs.readFileSync(pathToFile, 'utf8'));
 
@@ -37,11 +38,11 @@ admin.post('/', upload.fields(fieldsFiles), (req, res) => {
     }
 
     const fileContentsString = JSON.stringify(fileContents);
-    fs.writeFileSync(pathToFile, fileContentsString);
+    fs.writeFile(pathToFile, fileContentsString, (err) => {
+      if (err) console.log('error', err);
+    });
   }
-  const fileContents = JSON.parse(fs.readFileSync(pathToFile, 'utf8'));
-
-  res.render('adminPanel.hbs', { req, isAdmin: true, fileContents }); // не работает и редирект тоже
+  res.redirect('/admin');
 });
 
 admin.get('/', (req, res) => {
