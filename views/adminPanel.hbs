@@ -2,6 +2,81 @@
 {{> Header }}
 <div class="container">
   <h4>Админ панель</h4>
+  {{#if isAdmin}}
+    <form action="/" method="POST">
+      <div class="row banners">
+        <div class="col l8 m8 s12">
+          <div class="preview-main">
+            <div class="uploaded_picture" onclick="uploadedPicture(1)">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Загрузить картинку</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </div>
+            <img src="images/books/1b82227209dcb1e55b618ec509af5aef" alt="">
+          </div>
+        </div>
+        <div class="col l4 m4">
+          <div class="preview-minor">
+            <div class="uploaded_picture" onclick="uploadedPicture(2)">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Загрузить картинку</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </div>
+            <img src="images/books/1b82227209dcb1e55b618ec509af5aef" alt="">
+          </div>
+        </div>
+        <div class="col l4 m4">
+          <div class="preview-minor">
+            <div class="uploaded_picture" onclick="uploadedPicture(3)">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Загрузить картинку</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </div>
+            <img src="images/books/1b82227209dcb1e55b618ec509af5aef" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>Выберите тему первой записи</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+      </div>
+      <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>Выберите тему второй записи</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+      </div>
+      <div class="btn-save">
+        <button class="waves-effect waves-light btn ">
+          Сохранить
+        </button>
+      </div>
+    </form>
+  {{/if}}
 </div>
 {{> Footer }}
 

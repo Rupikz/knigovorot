@@ -60,7 +60,6 @@ app.use('/:user', user);
 app.use('/admin', verifyAdmin, adminPanel);
 app.use('/:not_found', notFound);
 
-
 app.listen(config.PORT, () => {
   console.log('server has been started..', config.PORT);
 });
