@@ -7,7 +7,7 @@
       <div class="row banners">
         <div class="col l8 m8 s12">
           <div class="preview-main">
-            <div class="uploaded_picture" onclick="uploadedPicture(1)">
+            <div class="uploaded_picture">
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Загрузить картинку</span>
@@ -18,12 +18,12 @@
                 </div>
               </div>
             </div>
-            <img src="images/preview/{{fileContents.first}}" alt="">
+            <img src="images/preview/{{fileContents.first.image}}" alt="">
           </div>
         </div>
         <div class="col l4 m4">
           <div class="preview-minor">
-            <div class="uploaded_picture" onclick="uploadedPicture(2)">
+            <div class="uploaded_picture">
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Загрузить картинку</span>
@@ -34,12 +34,12 @@
                 </div>
               </div>
             </div>
-            <img src="images/preview/{{fileContents.second}}" alt="">
+            <img src="images/preview/{{fileContents.second.image}}" alt="">
           </div>
         </div>
         <div class="col l4 m4">
           <div class="preview-minor">
-            <div class="uploaded_picture" onclick="uploadedPicture(3)">
+            <div class="uploaded_picture">
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Загрузить картинку</span>
@@ -50,25 +50,43 @@
                 </div>
               </div>
             </div>
-            <img src="images/preview/{{fileContents.third}}" alt="">
+            <img src="images/preview/{{fileContents.third.image}}" alt="">
           </div>
         </div>
       </div>
-      <div class="input-field col s12">
-        <select>
-          <option value="" disabled selected>Выберите тему первой записи</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
+      <div class="row">
+        <h4>Настройка ссылок банеров</h4>
+        <div class="input-field col s12">
+          <input id="src1" type="text" name="src1" class="validate" value="{{fileContents.first.src}}">
+          <label for="src1">src 1</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="src2" type="text" name="src2" class="validate" value="{{fileContents.second.src}}">
+          <label for="src2">src 2</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="src3" type="text" name="src3" class="validate" value="{{fileContents.third.src}}">
+          <label for="src3">src 3</label>
+        </div>
       </div>
-      <div class="input-field col s12">
-        <select>
-          <option value="" disabled selected>Выберите тему второй записи</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
+      <div class="row">
+        <h4>Настройка тем вывода</h4>
+        <div class="input-field col s12">
+          <select name="genre1">
+            <option value="" disabled selected>Выберите тему первой записи</option>
+            {{#each genres}}
+            <option value="{{this.id}}">{{this.genres}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="input-field col s12">
+          <select name="genre2">
+            <option value="" disabled selected>Выберите тему второй записи</option>
+            {{#each genres}}
+            <option value="{{this.id}}">{{this.genres}}</option>
+            {{/each}}
+          </select>
+        </div>
       </div>
       <div class="btn-save">
         <button class="waves-effect waves-light btn ">

@@ -1,4 +1,4 @@
 {
     "verbose": true,
-    "ignore": ["server/config/configPictures.json"]
+    "ignore": ["server/config/configPictures.json", "server/config/configThemes.json"]
 }
