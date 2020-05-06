@@ -4,6 +4,7 @@ node_modules
 server/public
 /client/images
 /public/images
+/server/config
 
 # local env files
 .env.local

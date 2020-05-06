@@ -12,18 +12,18 @@ index.get('/', async (req, res) => {
   try {
     const pathToFileThemes = path.resolve(__dirname, '../config/configThemes.json');
     const fileThemes = JSON.parse(fs.readFileSync(pathToFileThemes, 'utf8'));
-    const selectBooksQueryArr = selectBooksByGenreString([fileThemes.first, fileThemes.second]);
-    // работает, сделать вывод названий
-    console.log(selectBooksQueryArr);
+    const selectBooksQueryArr = selectBooksByGenreString(
+      [fileThemes.first.id, fileThemes.second.id],
+    );
     const sectionBooks = [];
     const rowsBooks1 = await dbQuery.query(selectBooksQueryArr[0]);
     sectionBooks.push({
-      name: 'Искусство, Искусствоведение, Дизайн',
+      name: fileThemes.first.name,
       books: rowsBooks1.rows,
     });
     const rowsBooks2 = await dbQuery.query(selectBooksQueryArr[1]);
     sectionBooks.push({
-      name: 'Детективы и Триллеры',
+      name: fileThemes.second.name,
       books: rowsBooks2.rows,
     });
     const pathToFilePictures = path.resolve(__dirname, '../config/configPictures.json');

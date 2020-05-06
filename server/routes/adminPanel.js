@@ -22,7 +22,7 @@ const fieldsFiles = [{
 
 const admin = express.Router('/');
 
-admin.post('/', upload.fields(fieldsFiles), (req, res) => {
+admin.post('/', upload.fields(fieldsFiles), async (req, res) => {
   if (req.files) {
     const pathToFilePictures = path.resolve(__dirname, '../config/configPictures.json');
     const fileContents = JSON.parse(fs.readFileSync(pathToFilePictures, 'utf8'));
@@ -52,12 +52,25 @@ admin.post('/', upload.fields(fieldsFiles), (req, res) => {
   if (req.body.genre1 || req.body.genre2) {
     const pathToFileThemes = path.resolve(__dirname, '../config/configThemes.json');
     const fileContents = JSON.parse(fs.readFileSync(pathToFileThemes, 'utf8'));
+
+    const selectGenresOneQuery = `SELECT * FROM public.genres WHERE id=${req.body.genre1}`;
+    const selectGenresTwoQuery = `SELECT * FROM public.genres WHERE id=${req.body.genre2}`;
+
+    const rowsGenresOne = await dbQuery.query(selectGenresOneQuery);
+    const rowsGenresTwo = await dbQuery.query(selectGenresTwoQuery);
+
+    const genresOneName = rowsGenresOne.rows[0].genres;
+    const genresTwoName = rowsGenresTwo.rows[0].genres;
+
     if (req.body.genre1) {
-      fileContents.first = req.body.genre1;
+      fileContents.first.id = req.body.genre1;
+      fileContents.first.name = genresOneName;
     }
     if (req.body.genre2) {
-      fileContents.second = req.body.genre2;
+      fileContents.second.id = req.body.genre2;
+      fileContents.second.name = genresTwoName;
     }
+
     const fileContentsString = JSON.stringify(fileContents);
     fs.writeFile(pathToFileThemes, fileContentsString, (err) => {
       if (err) console.log('error', err);
@@ -70,14 +83,16 @@ admin.post('/', upload.fields(fieldsFiles), (req, res) => {
 admin.get('/', async (req, res) => {
   const selectGenresQuery = 'SELECT * FROM public.genres';
   try {
+    const pathToFileThemes = path.resolve(__dirname, '../config/configThemes.json');
+    const fileContentsThemes = JSON.parse(fs.readFileSync(pathToFileThemes, 'utf8'));
+
     const rowsGenres = await dbQuery.query(selectGenresQuery);
     const genres = rowsGenres.rows;
-
     const pathToFile = path.resolve(__dirname, '../config/configPictures.json');
     const fileContents = JSON.parse(fs.readFileSync(pathToFile, 'utf8'));
 
     return res.render('adminPanel.hbs', {
-      req, isAdmin: true, fileContents, genres,
+      req, isAdmin: true, fileContents, genres, fileContentsThemes,
     });
   } catch (error) {
     console.log('Ошибка в загрузке жанров из бд:', error);

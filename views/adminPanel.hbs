@@ -73,7 +73,7 @@
         <h4>Настройка тем вывода</h4>
         <div class="input-field col s12">
           <select name="genre1">
-            <option value="" disabled selected>Выберите тему первой записи</option>
+            <option value="{{fileContentsThemes.first.id}}">{{fileContentsThemes.first.name}}</option>
             {{#each genres}}
             <option value="{{this.id}}">{{this.genres}}</option>
             {{/each}}
@@ -81,7 +81,7 @@
         </div>
         <div class="input-field col s12">
           <select name="genre2">
-            <option value="" disabled selected>Выберите тему второй записи</option>
+            <option value="{{fileContentsThemes.second.id}}">{{fileContentsThemes.second.name}}</option>
             {{#each genres}}
             <option value="{{this.id}}">{{this.genres}}</option>
             {{/each}}
