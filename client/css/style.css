@@ -7,6 +7,7 @@
 
 h4 {
     font-family: BravoRG;
+    font-size: 2.1rem;
 }
 
 .default {
@@ -18,7 +19,7 @@ h4 {
 
 .title{
     /* Сделать единые стили для названий */
-    color: midnightblue;
+    color: #263238;
 }
 
 .logo {
@@ -60,13 +61,19 @@ footer {
 }
 
 .btn {
-    background-color: Darkslategray;
+    background-color: #0e4646;
 }
 
 .btn:hover {
-    background-color: #004d40;
+    background-color: #0a2b2b;
 }
 
+.user-img {
+    width: 25px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 15px 0;
+}
 
 /* banners */
 
@@ -110,7 +117,6 @@ footer {
     color: gray;
     font-size: 18px;
     float: right;
-
 }
 
 .card-image img{
@@ -147,18 +153,15 @@ span.card-writer {
 
 /* Filter */
 
-.filter-bar {
-    border-right: 1px solid #ddd;
-}
-
 .collapsible {
     box-shadow: none;
     border: 0px;
-
 }
 
 .collapsible-header, .collapsible-body {
     border: 0px;
+    font-size: 16px;
+    color: #263238;
 }
 
 .collapsible-body {
@@ -174,22 +177,18 @@ span.card-writer {
     border: 2px solid #004d40;
 }
 
-.collapsible-body p {
-    margin: 0;
-    padding: 15px;
-}
-
-.collapsible-body p a{
-    color: midnightblue;
+.collapsible-body ul a{
+    color: #0f5959;
 }
 
 .collapsible-header:hover {
     background-color: rgba(238, 238, 238, 0.438);
 }
 
-.collapsible-body p:hover {
+.collection-item:hover {
     background-color: rgba(238, 238, 238, 0.671);
 }
+
 
 /* Bookshelf */
 
@@ -214,9 +213,10 @@ span.card-writer {
     text-align: center;
 }
 
-.login-form .logo {
+.login-form .brand-logo {
     font-size: 2.1rem;
     color: midnightblue;
+    color: #424242;
 }
 
 /* user */
