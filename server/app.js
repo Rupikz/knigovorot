@@ -17,6 +17,7 @@ import verifyAdmin from './middleware/verifyAdmin';
 import index from './routes/index';
 import login from './routes/login';
 import books from './routes/books';
+import book from './routes/book';
 import user from './routes/user';
 import edit from './routes/edit';
 import addbook from './routes/addbook';
@@ -37,7 +38,8 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
-app.use(express.static(path.resolve(__dirname, '../client')));
+// app.use(express.static(path.resolve(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
@@ -53,6 +55,7 @@ hbs.registerPartials(path.resolve(__dirname, '../views/partials'));
 app.use(verifyToken);
 app.use('/', index);
 app.use('/books', books);
+app.use('/id*', book);
 app.use('/login', login);
 app.use('/edit', edit);
 app.use('/addbook', addbook);
