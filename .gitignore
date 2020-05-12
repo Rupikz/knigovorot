@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-server/public
+server/public/images
 /client/images
 /public/images
 /server/config
