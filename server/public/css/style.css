@@ -226,7 +226,7 @@ span.card-writer {
 }
 
 .card-inform {
-    height: 200px;
+    min-height: 200px;
     margin: 7.5px 0 0 0;
 }
 

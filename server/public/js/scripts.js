@@ -11,3 +11,7 @@ $(document).ready(() => {
 $(document).ready(() => {
   $('select').formSelect();
 });
+
+$(document).ready(() => {
+  $('.materialboxed').materialbox();
+});

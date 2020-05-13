@@ -1,6 +1,46 @@
 {{> Head }}
 {{> Header }}
 <div class="container">
-  <h4>Страница с книгой</h4>
+    <div class="row">
+      <div class="col s12 m4 l4 xl4">
+        <div class="card">
+            <div class="card-avatar" style="background-image: url('./images/books/{{ bookInformation.preview }}');"></div>
+            {{!-- <a class="waves-effect waves-light blue-grey darken-4 btn btn-edit" href="/edit">Нравится</a> --}}
+            <a class="waves-effect waves-light blue-grey darken-4 btn btn-edit" href="/">Написать</a>
+        </div>
+      </div>
+      <div class="col s12 m8 l8 xl8">
+        <div class="grey lighten-5 card-inform">
+          <div class="blue-grey darken-4 section">
+            <h4>{{ bookInformation.name_book }}</h4>
+            <h5>{{ bookInformation.author_name }}</h5>
+          </div>
+          <div class="section">
+            <div class="inform-section">
+              <p>Год издания: <b>{{ bookInformation.year }}</b></p>
+              <p>Цена: <b>{{ bookInformation.price }}</b></p>
+              <p>Жанр: <b>{{ bookInformation.genres }}</b></p>
+              <p>Издатель: <b>{{ bookInformation.publisher }}</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="blue-grey darken-4 books-section">
+          <h4>Фото</h4>
+        </div>
+        <div class="section">
+          {{#each bookInformation.id_image_book }}
+            <img class="materialboxed" src="./images/books/{{ this }}" alt="" width="120px">
+          {{/each}}
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="blue-grey darken-4 books-section">
+          <h4>Похожие книги</h4>
+        </div>
+        {{> Cards books}}
+      </div>
+    </div>
 </div>
 {{> Footer }}

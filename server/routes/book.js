@@ -12,7 +12,10 @@ book.get('/', async (req, res) => {
   WHERE public.books.id=${idBook}`;
   try {
     const rowsBook = await dbQuery.query(selectBook);
-    const bookInformation = rowsBook.rows;
+    const bookInformation = rowsBook.rows[0];
+    const [preview, ...rest] = bookInformation.id_image_book;
+    bookInformation.preview = preview;
+    bookInformation.id_image_book = rest;
     console.log('инфа', bookInformation);
     return res.render('book.hbs', { req, bookInformation });
   } catch (error) {
