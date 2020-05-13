@@ -3,20 +3,24 @@
     {{#each this}}
       {{#with this}}
         <div class="col l3 m4 s6">
-          <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="images/books/{{ id_image_book }}">
+          <a href="/id{{ id }}">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/books/{{ id_image_book.[0] }}">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
+                  {{ name_book }}
+                </span>
+                <span class="card-writer activator grey-text text-darken-2">
+                  {{ author_book }}
+                </span>
+                <span class="activator grey-text text-darken-1">
+                    <span class="сard-price">{{ price }}</span> руб.
+                  </span>
+              </div>
             </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">
-                {{ name_book }}
-              </span>
-              <span class="card-writer activator grey-text text-darken-2">
-                {{ author_book }}
-              </span>
-              <p><span class="сard-price">{{ price }}</span> руб.</p>
-            </div>
-          </div>
+          </a>
         </div>
       {{/with}}
     {{/each}}

@@ -3,20 +3,24 @@
       {{#if booksBd}}
         {{#each booksBd}}
           <div class="col s6 m6 l4 xl3">
-            <div class="card">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/books/{{ this.id_image_book }}">
+            <a href="/id{{ id }}">
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="images/books/{{ this.id_image_book }}">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">
+                    {{ this.name_book }}
+                  </span>
+                  <span class="card-writer activator grey-text text-darken-2">
+                    {{ this.author_book }}
+                  </span>
+                  <span class="activator grey-text text-darken-1">
+                    <span class="сard-price">{{ this.price }}</span> руб.
+                  </span>
+                </div>
               </div>
-              <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">
-                  {{ this.name_book }}
-                </span>
-                <span class="card-writer activator grey-text text-darken-2">
-                  {{ this.author_book }}
-                </span>
-                <p><span class="сard-price">{{ this.price }}</span> руб.</p>
-              </div>
-            </div>
+            </a>
           </div>
         {{/each}}
       {{else}}

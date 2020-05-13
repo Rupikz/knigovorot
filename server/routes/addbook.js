@@ -5,7 +5,7 @@ import dbQuery from '../db/dbQuery';
 const addbook = express.Router('/');
 
 const upload = multer({
-  dest: 'client/images/books',
+  dest: 'server/public/images/books',
   limits: {
     fileSize: 100000000,
   },

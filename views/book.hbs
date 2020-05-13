@@ -29,11 +29,11 @@
         <div class="blue-grey darken-4 books-section">
           <h4>Фото</h4>
         </div>
-        <div class="section">
           {{#each bookInformation.id_image_book }}
-            <img class="materialboxed" src="./images/books/{{ this }}" alt="" width="120px">
+            <div class="col section-img">
+              <img class="materialboxed" src="./images/books/{{ this }}" alt="" width="120px" height="100px">
+            </div>
           {{/each}}
-        </div>
       </div>
       <div class="col s12">
         <div class="blue-grey darken-4 books-section">

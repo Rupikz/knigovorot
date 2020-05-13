@@ -16,7 +16,6 @@ book.get('/', async (req, res) => {
     const [preview, ...rest] = bookInformation.id_image_book;
     bookInformation.preview = preview;
     bookInformation.id_image_book = rest;
-    console.log('инфа', bookInformation);
     return res.render('book.hbs', { req, bookInformation });
   } catch (error) {
     console.log('Ошибка в загрузке книг из бд:', error);

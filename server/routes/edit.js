@@ -6,7 +6,7 @@ import { updateUser, updateImage } from '../controller/updateUsers';
 const edit = express.Router('/');
 
 const upload = multer({
-  dest: 'public/images/users',
+  dest: 'server/public/images/users',
   limits: {
     fileSize: 100000000,
   },

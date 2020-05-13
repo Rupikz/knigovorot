@@ -6,7 +6,7 @@ import dbQuery from '../db/dbQuery';
 
 
 const upload = multer({
-  dest: 'client/images/preview',
+  dest: 'server/public/images/preview',
   limits: {
     fileSize: 100000000,
   },

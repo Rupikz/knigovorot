@@ -147,7 +147,7 @@ span.card-writer {
 }
 
 .сard-price {
-    color: midnightblue;
+    color: #0e4646;
     font-size: 18px;
 }
 
@@ -242,6 +242,10 @@ span.card-writer {
 .inform-section {
     color: black;
     font-size: 16px;
+}
+
+.section-img {
+    margin: 10px 5px; 
 }
 
 /* edit */
