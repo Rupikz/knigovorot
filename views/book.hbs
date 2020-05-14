@@ -25,16 +25,18 @@
           </div>
         </div>
       </div>
-      <div class="col s12">
-        <div class="blue-grey darken-4 books-section">
-          <h4>Фото</h4>
+      {{#if bookInformation.id_image_book.length }}
+        <div class="col s12">
+          <div class="blue-grey darken-4 books-section">
+            <h4>Фото</h4>
+          </div>
+            {{#each bookInformation.id_image_book }}
+              <div class="col section-img">
+                <img class="materialboxed" src="./images/books/{{ this }}" alt="" width="120px" height="100px">
+              </div>
+            {{/each}}
         </div>
-          {{#each bookInformation.id_image_book }}
-            <div class="col section-img">
-              <img class="materialboxed" src="./images/books/{{ this }}" alt="" width="120px" height="100px">
-            </div>
-          {{/each}}
-      </div>
+      {{/if}}
       <div class="col s12">
         <div class="blue-grey darken-4 books-section">
           <h4>Похожие книги</h4>

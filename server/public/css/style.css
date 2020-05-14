@@ -200,6 +200,14 @@ span.card-writer {
     justify-content: space-evenly;
 }
 
+.icon-favorite {
+    float: right;
+    top: 10px;
+    margin-top: -35px;
+    margin-right: 10px;
+    color: #d32f2f;
+}
+
 /* Login */
 
 .login-form {
@@ -242,6 +250,10 @@ span.card-writer {
 .inform-section {
     color: black;
     font-size: 16px;
+}
+
+.inform-section p {
+    margin: 10px 0;
 }
 
 .section-img {
