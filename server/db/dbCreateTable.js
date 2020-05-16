@@ -27,6 +27,7 @@ const bookCreateQuery = `CREATE TABLE IF NOT EXISTS books
   id_user SERIAL NOT NULL,
   id_image_book text[],
   exists boolean DEFAULT(true),
+  date date[] NOT NULL,
   FOREIGN KEY (genre_id) REFERENCES genres (id),
   FOREIGN KEY (publisher_id) REFERENCES publisher (id),
   FOREIGN KEY (id_user) REFERENCES users (id))`;

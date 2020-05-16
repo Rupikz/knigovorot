@@ -15,13 +15,13 @@ addbook.post('/', upload.array('files-book', 8), async (req, res) => {
   const imageName = [];
   req.files.map((file) => imageName.push(file.filename));
   const insertBookQuery = `INSERT INTO public.books(
-    name_book, author_book, genre_id, publisher_id, year, price, id_user, id_image_book)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
+    name_book, author_book, genre_id, publisher_id, year, price, id_user, id_image_book, date)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
   const {
     name_book: nameBook, athor_book: athorBook, genre, publisher, year, price,
   } = req.body;
   const values = [
-    nameBook, athorBook, +genre, +publisher, +year, +price, req.user.id, imageName,
+    nameBook, athorBook, +genre, +publisher, +year, +price, req.user.id, imageName, new Date(),
   ];
   try {
     await dbQuery.query(insertBookQuery, values);

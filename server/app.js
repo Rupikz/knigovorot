@@ -4,15 +4,13 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import path from 'path';
 import flash from 'connect-flash';
-import cors from 'cors';
+// import cors from 'cors';
 import hbs from 'hbs';
 
 import config from './config/config';
 import verifyToken from './middleware/verifyAuth';
 import verifyAdmin from './middleware/verifyAdmin';
-
-
-// Routers
+import flashMiddleWare from './middleware/flashMiddleWare';
 
 import index from './routes/index';
 import login from './routes/login';
@@ -26,28 +24,14 @@ import notFound from './routes/notFound';
 
 const app = express();
 
-// MiddleWare
-
-app.use(cookieParser());
-app.use(cors()); // xz zachem, no nado
-app.use(session({
-  secret: config.session.cookie_secret,
-  name: config.session.cookie_name,
-  store: config.session.sessionStore,
-  proxy: true,
-  resave: true,
-  saveUninitialized: true,
-}));
-// app.use(express.static(path.resolve(__dirname, '../client')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(flash());
-app.use((req, res, next) => {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  next();
-});
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session(config.session));
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(flash());
+app.use(flashMiddleWare);
+// app.use(cors());
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.resolve(__dirname, '../views/partials'));
