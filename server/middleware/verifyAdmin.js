@@ -11,7 +11,7 @@ const verifyUserAdminPanel = async (req, res, next) => {
       res.redirect('/404');
     }
   } catch (error) {
-    console.log(error);
+    console.log('VerifyAdmin: ', error);
     res.redirect('/404');
   }
 };

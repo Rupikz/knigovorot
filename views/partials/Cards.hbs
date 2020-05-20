@@ -8,7 +8,7 @@
                 <a href="/id{{ id }}">
                   <img class="activator" src="images/books/{{ id_image_book.[0] }}">
                 </a>
-                <i class="material-icons icon-favorite" onclick="like({{ id }})">favorite</i>
+                <i id="icon-{{ id }}" class="material-icons icon-favorite" onclick="like({{ id }})" value="{{ id }}">favorite_border</i>
               </div>
               <a href="/id{{ id }}">
                 <div class="card-content">

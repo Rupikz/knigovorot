@@ -49,17 +49,23 @@ function setCookie(name, value, options = {}) {
 }
 
 const like = (id) => {
-  const cookie = getCookie('likes');
+  const cookie = getCookie('likes').split(',');
   if (!cookie) {
+    document.getElementById(`icon-${id}`).innerHTML = 'favorite';
     setCookie('likes', id);
-  } else if (cookie.split(', ').includes(String(id))) {
-    const unLikeCookie = cookie.split(', ').filter((n) => n !== String(id)); // где-то здесь ошибка
+  } else if (cookie.includes(String(id))) {
+    document.getElementById(`icon-${id}`).innerHTML = 'favorite_border';
+    const unLikeCookie = cookie.filter((n) => n !== String(id));
     setCookie('likes', unLikeCookie);
   } else {
-    setCookie('likes', `${cookie}, ${id}`);
+    document.getElementById(`icon-${id}`).innerHTML = 'favorite';
+    setCookie('likes', `${cookie},${id}`);
   }
-
-
-  const cookieTest = getCookie('likes'); // убрать
-  console.log(cookieTest);
 };
+
+getCookie('likes').split(',').forEach((n) => {
+  const inonElement = document.getElementById(`icon-${n}`);
+  if (inonElement) {
+    inonElement.innerHTML = 'favorite';
+  }
+});

@@ -74,7 +74,7 @@ const createUser = async (req, res) => {
 
     res.render('login.hbs', { successMsg });
   } catch (error) {
-    console.log(error);
+    console.log('UserController: ', error);
     if (error.constraint === 'users_email_key') {
       req.flash('error_msg', 'Аккаунт с такой почтой уже существует');
     }
