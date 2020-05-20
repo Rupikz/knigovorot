@@ -81,7 +81,7 @@ books.get('/', async (req, res) => {
   } else if (req.query.publisher) {
     selectBooksQuery = `SELECT * FROM public.books WHERE publisher_id=${req.query.publisher} LIMIT 5 OFFSET ${(numberPages - 1) * 5}`;
   } else {
-    selectBooksQuery = `SELECT * FROM public.books LIMIT 5 OFFSET ${(numberPages - 1) * 5}`;
+    selectBooksQuery = `SELECT * FROM public.books LIMIT 8 OFFSET ${(numberPages - 1) * 5}`;
   }
 
   try {
@@ -96,7 +96,7 @@ books.get('/', async (req, res) => {
     const rowsCount = await dbQuery.query(selectCountBooks);
     const booksCount = rowsCount.rows[0].count;
     const paginationMenu = createPagination(numberPages, booksCount);
-    console.log(paginationMenu); // Лог вывода книг (books)
+    console.log(booksBd); // Лог вывода книг (books)
     return res.render('books.hbs', {
       req, genresArt, genresNoArt, publisher, booksBd, numberPages, paginationMenu,
     });
