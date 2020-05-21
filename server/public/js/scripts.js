@@ -50,22 +50,24 @@ function setCookie(name, value, options = {}) {
 
 const like = (id) => {
   const cookie = getCookie('likes').split(',');
-  if (!cookie) {
+  if (!cookie) { // if cookie underfined that "like"
     document.getElementById(`icon-${id}`).innerHTML = 'favorite';
     setCookie('likes', id);
-  } else if (cookie.includes(String(id))) {
+  } else if (cookie.includes(String(id))) { // unlike
     document.getElementById(`icon-${id}`).innerHTML = 'favorite_border';
     const unLikeCookie = cookie.filter((n) => n !== String(id));
     setCookie('likes', unLikeCookie);
-  } else {
+  } else { // like
     document.getElementById(`icon-${id}`).innerHTML = 'favorite';
     setCookie('likes', `${cookie},${id}`);
   }
+  document.getElementById('like-counter').innerHTML = cookie.length;
 };
-
-getCookie('likes').split(',').forEach((n) => {
+const arrLikes = getCookie('likes').split(',');
+arrLikes.forEach((n) => {
   const inonElement = document.getElementById(`icon-${n}`);
   if (inonElement) {
     inonElement.innerHTML = 'favorite';
   }
 });
+document.getElementById('like-counter').innerHTML = arrLikes.length;

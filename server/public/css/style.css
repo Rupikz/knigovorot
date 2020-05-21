@@ -75,6 +75,11 @@ footer {
     padding: 15px 0;
 }
 
+#like-counter {
+    font-family: none;
+    font-size: 50%;
+}
+
 /* banners */
 
 .banners {
