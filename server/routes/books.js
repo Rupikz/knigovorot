@@ -77,11 +77,11 @@ books.get('/', async (req, res) => {
 
   let selectBooksQuery;
   if (req.query.genres) {
-    selectBooksQuery = `SELECT * FROM public.books WHERE genre_id=${req.query.genres} LIMIT 5 OFFSET ${(numberPages - 1) * 5}`;
+    selectBooksQuery = `SELECT * FROM public.books WHERE genre_id=${req.query.genres} ORDER BY id DESC LIMIT 5 OFFSET ${(numberPages - 1) * 5}`;
   } else if (req.query.publisher) {
-    selectBooksQuery = `SELECT * FROM public.books WHERE publisher_id=${req.query.publisher} LIMIT 5 OFFSET ${(numberPages - 1) * 5}`;
+    selectBooksQuery = `SELECT * FROM public.books WHERE publisher_id=${req.query.publisher} ORDER BY id DESC LIMIT 5 OFFSET ${(numberPages - 1) * 5}`;
   } else {
-    selectBooksQuery = `SELECT * FROM public.books LIMIT 8 OFFSET ${(numberPages - 1) * 5}`;
+    selectBooksQuery = `SELECT * FROM public.books ORDER BY id DESC LIMIT 8 OFFSET ${(numberPages - 1) * 5}`;
   }
 
   try {

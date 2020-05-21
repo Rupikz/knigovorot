@@ -11,18 +11,22 @@ const upload = multer({
   },
 });
 
-addbook.post('/', upload.array('files-book', 8), async (req, res) => {
+addbook.post('/', upload.fields([{ name: 'file-preview', maxCount: 1 }, { name: 'files-book', maxCount: 8 }]), async (req, res) => {
   const imageName = [];
-  req.files.map((file) => imageName.push(file.filename));
+  req.files['files-book'].map((file) => imageName.push(file.filename));
+  const imgPreview = req.files['file-preview'][0].filename;
+
   const insertBookQuery = `INSERT INTO public.books(
-    name_book, author_book, genre_id, publisher_id, year, price, id_user, id_image_book, date)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
+    name_book, author_book, genre_id, publisher_id, year, price, id_user, id_image_book, date, id_book_preview)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`;
   const {
     name_book: nameBook, athor_book: athorBook, genre, publisher, year, price,
   } = req.body;
   const values = [
-    nameBook, athorBook, +genre, +publisher, +year, +price, req.user.id, imageName, new Date(),
+    nameBook, athorBook, +genre, +publisher, +year,
+    +price, req.user.id, imageName, new Date(), imgPreview,
   ];
+
   try {
     await dbQuery.query(insertBookQuery, values);
     req.flash('success_msg', 'Книга успешно выставленна');

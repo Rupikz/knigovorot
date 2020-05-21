@@ -10,7 +10,7 @@ user.get('/', async (req, res, next) => {
     loginUrl,
   ];
   const selectUserBooksQuery = `SELECT id, name_book, author_book, price, 
-  id_image_book FROM public.books WHERE id_user = $1 AND exists = true ORDER BY date DESC`;
+  id_image_book, id_book_preview FROM public.books WHERE id_user = $1 AND exists = true ORDER BY date DESC`;
   try {
     const userRows = await dbQuery.query(selectUserQuery, valuesUser);
     const profile = userRows.rows[0];
