@@ -35,6 +35,11 @@
               <li>
                 <a href="/admin?about">О нас</a>
               </li>
+              {{#if req.user.admin}}
+                <li>
+                  <a href="/admin?exit">Выйти из админ-панели</a>
+                </li>
+              {{/if}}
             </ul>
           </div>
         {{else}}
@@ -91,6 +96,36 @@
               <li>
                 <a href="/about">О нас</a>
               </li>
+              {{#if req.user}}
+                <li>
+                  <a href="/{{ req.user.login }}">
+                    {{#if req.user.id_image }}
+                      <i class="large material-icons">
+                        <img src="/images/users/{{ req.user.id_image }}" class="user-img" alt="">
+                      </i>
+                    {{else}}
+                      <i class="large material-icons">account_circle</i>
+                    {{/if}}
+                  </a>
+                </li>
+                <li>
+                  <a href="/likes">
+                    <i class="large material-icons">favorite_border<span id="like-counter">1</span></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="/login/logout">Выйти</a>
+                </li>
+              {{else}}
+                <li>
+                  <a href="/login">Войти</a>
+                </li>
+              {{/if}}
+              {{#if req.user.admin}}
+                <li>
+                  <a href="/admin">Админ панель</a>
+                </li>
+              {{/if}}
             </ul>
           </div>
         {{/if}}

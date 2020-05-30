@@ -8,7 +8,10 @@
     "create-dev-tables": "babel-node ./server/db/dev/dbConnection createAllTables",
     "setup": "npm-run-all -p dev create-dev-tables",
     "build": "webpack -d",
-    "prod": "webpack -p"
+    "prod": "webpack -p",
+    "test-cover": "jest --coverage",
+    "test": "jest"
+
   },
   "author": "",
   "license": "ISC",
@@ -37,6 +40,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.0.1",
     "nodemon": "^2.0.2"
   }
 }

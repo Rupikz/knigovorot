@@ -5,6 +5,7 @@ server/public/images
 /client/images
 /public/images
 /server/config
+coverage
 
 # local env files
 .env.local

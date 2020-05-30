@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import path from 'path';
 import flash from 'connect-flash';
-// import cors from 'cors';
 import hbs from 'hbs';
 
 import config from './config/config';
@@ -32,7 +31,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(flash());
 app.use(flashMiddleWare);
-// app.use(cors());
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.resolve(__dirname, '../views/partials'));

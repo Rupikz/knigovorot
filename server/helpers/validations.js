@@ -9,26 +9,24 @@ const hashPassword = (password) => bcrypt.hashSync(password, salt);
 const comparePassword = (hashedPassword, password) => bcrypt.compareSync(password, hashedPassword);
 
 const isValidEmail = (email) => {
-  const regEx = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-  return regEx.test(String(email).toLowerCase());
+  const indexDog = email.indexOf('@');
+  if (indexDog < 0) return false;
+  const emailBefore = email.slice(0, indexDog);
+  const emailAfter = email.slice(indexDog + 1);
+  const reg = new RegExp(/[,:;"'{[}\]*+|<>?$%^&=@!\/\\]/g);
+  return !reg.test(emailBefore) && !reg.test(emailAfter);
 };
 
-const valid = (str) => String(str).trim(); // Доделать
+const valid = (str) => String(str).trim().replace(/<[^>]+>/g, '').replace(/[><;'"]/g, '');
 
-const isValidatePassword = (password) => {
-  if (password.length <= 5 || password === '') {
-    return false;
-  }
-
-  return true;
-};
+const isValidatePassword = (password) => !(password.length <= 5 || password === '');
 
 const isEmpty = (input) => {
   if (input === undefined || input === '') {
     return true;
   }
 
-  if (input.replace(/\s/g, '').length) {
+  if (input.trim().replace(/\s/g, '').length) {
     return false;
   }
 
