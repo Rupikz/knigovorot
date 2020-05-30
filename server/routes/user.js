@@ -14,13 +14,14 @@ user.get('/', async (req, res, next) => {
   try {
     const userRows = await dbQuery.query(selectUserQuery, valuesUser);
     const profile = userRows.rows[0];
-    const booksRows = await dbQuery.query(selectUserBooksQuery, [profile.id]);
-    const userBooks = booksRows.rows || false;
-    let isYou = false;
 
     if (!profile) {
       return next();
     }
+
+    const booksRows = await dbQuery.query(selectUserBooksQuery, [profile.id]);
+    const userBooks = booksRows.rows || false;
+    let isYou = false;
 
     if (profile.login === req.user.login) {
       isYou = true;

@@ -48,13 +48,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   {{#if errorMsg}}
     <script>
-      M.toast({html: '{{ errorMsg }}', classes: 'error'});
+      {{#each errorMsg}}
+        M.toast({html: '{{ this }}', classes: 'error'});
+      {{/each}}
     </script>
   {{/if}}
 
   {{#if successMsg}}
     <script>
-      M.toast({html: '{{successMsg}}', classes: 'success' });
+      M.toast({html: '{{ successMsg }}', classes: 'success' });
     </script>
   {{/if}}
 </body>

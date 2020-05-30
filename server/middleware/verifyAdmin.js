@@ -1,6 +1,9 @@
 import dbQuery from '../db/dbQuery';
 
 const verifyUserAdminPanel = async (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/404');
+  }
   const checkAdminQuery = `SELECT admin FROM public.users WHERE login = '${req.user.login}'`;
   try {
     const rowsSelect = await dbQuery.query(checkAdminQuery);

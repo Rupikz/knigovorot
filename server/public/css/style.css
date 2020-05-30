@@ -11,7 +11,7 @@ html {
 
 h4 {
     font-family: BravoRG;
-    font-size: 2.1rem;
+    /* font-size: 2.1rem; */
 }
 
 p {
@@ -60,12 +60,12 @@ footer {
 
 .error {
     background-color: rgba(175, 35, 35, 0.14);
-    color: black;
+    color: #333;
 }
 
 .success {
     background-color: rgba(25, 223, 18, 0.14);
-    color: black;
+    color: #333;
 }
 
 .btn {

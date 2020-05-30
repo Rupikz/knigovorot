@@ -13,6 +13,7 @@ import flashMiddleWare from './middleware/flashMiddleWare';
 
 import index from './routes/index';
 import login from './routes/login';
+import about from './routes/about';
 import books from './routes/books';
 import likes from './routes/likes';
 import book from './routes/book';
@@ -40,6 +41,7 @@ app.use('/', index);
 app.use('/id*', book);
 app.use('/edit', edit);
 app.use('/books', books);
+app.use('/about', about);
 app.use('/likes', likes);
 app.use('/login', login);
 app.use('/addbook', addbook);
