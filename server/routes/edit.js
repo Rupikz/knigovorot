@@ -17,6 +17,10 @@ edit.post('/', upload.single('file-avatar'), updateImage);
 edit.post('/', updateUser, (req, res) => res.render('edit.hbs'));
 
 edit.get('/', (req, res) => {
+  if (!req.user) {
+    return res.redirect('/404');
+  }
+
   res.render('edit.hbs', { req });
 });
 

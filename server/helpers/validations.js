@@ -13,7 +13,7 @@ const isValidEmail = (email) => {
   if (indexDog < 0) return false;
   const emailBefore = email.slice(0, indexDog);
   const emailAfter = email.slice(indexDog + 1);
-  const reg = new RegExp(/[,:;"'{[}\]*+|<>?$%^&=@!\/\\]/g);
+  const reg = new RegExp(/[,:;"'{[}\]*+|<>?$%^&=@!\\/\\]/g);
   return !reg.test(emailBefore) && !reg.test(emailAfter);
 };
 
@@ -54,7 +54,7 @@ const generateUserToken = (id, login, email, firstName, lastName,
 const generateAdminToken = (email, id, isAdmin) => {
   const token = jwt.sign({
     admin_email: email,
-    admin_id: id, // тут тоже что-то поменять
+    admin_id: id,
     is_admin: isAdmin,
   },
   config.SECRET_JWT, { expiresIn: '3d' });

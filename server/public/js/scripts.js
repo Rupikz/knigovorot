@@ -49,25 +49,35 @@ function setCookie(name, value, options = {}) {
 }
 
 const like = (id) => {
-  const cookie = getCookie('likes').split(',');
+  const cookie = getCookie('likes');
+
   if (!cookie) { // if cookie underfined that "like"
     document.getElementById(`icon-${id}`).innerHTML = 'favorite';
     setCookie('likes', id);
   } else if (cookie.includes(String(id))) { // unlike
     document.getElementById(`icon-${id}`).innerHTML = 'favorite_border';
-    const unLikeCookie = cookie.filter((n) => n !== String(id));
+    const unLikeCookie = cookie.split(',').filter((n) => n !== String(id));
+    console.log(unLikeCookie);
     setCookie('likes', unLikeCookie);
   } else { // like
     document.getElementById(`icon-${id}`).innerHTML = 'favorite';
-    setCookie('likes', `${cookie},${id}`);
+    setCookie('likes', `${cookie.split(',')},${id}`);
   }
-  document.getElementById('like-counter').innerHTML = cookie.length;
+  const cookieArr = getCookie('likes').split(',');
+  console.log(cookieArr);
+  document.getElementById('like-counter').innerHTML = cookieArr.length;
 };
-const arrLikes = getCookie('likes').split(',');
-arrLikes.forEach((n) => {
-  const inonElement = document.getElementById(`icon-${n}`);
-  if (inonElement) {
-    inonElement.innerHTML = 'favorite';
-  }
-});
-document.getElementById('like-counter').innerHTML = arrLikes.length;
+
+if (getCookie('likes')) {
+  const arrLikes = getCookie('likes').split(',');
+  arrLikes.forEach((n) => {
+    const inonElement = document.getElementById(`icon-${n}`);
+    if (inonElement) {
+      inonElement.innerHTML = 'favorite';
+    }
+  });
+
+  document.getElementById('like-counter').innerHTML = arrLikes.length;
+} else {
+  document.getElementById('like-counter').innerHTML = 0;
+}

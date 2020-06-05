@@ -3,7 +3,6 @@ import config from '../config/config';
 
 const verifyToken = async (req, res, next) => {
   const { token } = req.cookies;
-
   try {
     const decoded = jwt.verify(token, config.SECRET_JWT);
 
@@ -22,7 +21,7 @@ const verifyToken = async (req, res, next) => {
 
     next();
   } catch (error) {
-    next(); // переделать
+    next();
   }
 };
 

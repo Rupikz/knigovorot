@@ -8,17 +8,17 @@
         <ul class="right hide-on-med-and-down">
         {{#if isAdmin}}
                   <li>
-                    <a href="/admin">Главная</a>
+                    <a href="/">Главная</a>
                   </li>
                   <li>
-                    <a href="/admin?books">Книги</a>
+                    <a href="/books">Книги</a>
                   </li>
                   <li>
-                    <a href="/admin?about">О нас</a>
+                    <a href="/about">О нас</a>
                   </li>
                   {{#if req.user.admin}}
                     <li>
-                      <a href="/admin?exit">Выйти из админ-панели</a>
+                      <a href="/">Выйти из админ-панели</a>
                     </li>
                   {{/if}}
                 </ul>
@@ -30,14 +30,14 @@
                 <a href="/admin">Главная</a>
               </li>
               <li>
-                <a href="/admin?books">Книги</a>
+                <a href="/books">Книги</a>
               </li>
               <li>
-                <a href="/admin?about">О нас</a>
+                <a href="/about">О нас</a>
               </li>
               {{#if req.user.admin}}
                 <li>
-                  <a href="/admin?exit">Выйти из админ-панели</a>
+                  <a href="/">Выйти из админ-панели</a>
                 </li>
               {{/if}}
             </ul>

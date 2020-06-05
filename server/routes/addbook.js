@@ -41,6 +41,10 @@ addbook.post('/', upload.fields([{ name: 'file-preview', maxCount: 1 }, { name: 
 });
 
 addbook.get('/', async (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/404');
+  }
+
   const selectGenresQuery = 'SELECT * FROM public.genres';
   const selectPublisherQuery = 'SELECT * FROM public.publisher';
 
