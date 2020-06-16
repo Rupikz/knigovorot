@@ -1,5 +1,5 @@
 export default {
-  PORT: process.env.PORT || 8085,
+  PORT: process.env.PORT || 8080,
   PROJECT: 'development',
   session: {
     secret: 'secret',
